@@ -16,7 +16,7 @@
             android:id="@+id/tvTikuName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="题库名称"
+            android:text="@string/tiku_name"
             android:textSize="16sp"
             android:textColor="#333333"
             android:textStyle="bold"/>
@@ -25,7 +25,7 @@
             android:id="@+id/tvTikuInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="共 0 题"
+            android:text="@string/total_zero_questions"
             android:textSize="12sp"
             android:textColor="#666666"
             android:layout_marginTop="4dp"/>

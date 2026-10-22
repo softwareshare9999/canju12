@@ -2,345 +2,402 @@
 
 <resources>
 
-    <!-- 定义诗句数组 -->
-    <string name="app_name">一二残局</string>
+    <string name="app_name">Tàn Cục 12</string>
+    <string name="main_title_placeholder">Số thứ tự câu</string>
+    <string name="time_placeholder">Thời gian: mm:ss/mm:ss</string>
+    <string name="accuracy_placeholder">Độ chính xác: đã biết + làm đúng / tổng số câu</string>
+    <string name="cheer_short">Lưu Bá Thiên cổ vũ bạn!</string>
+    <string name="btn_tiku">Kho câu</string>
+    <string name="btn_select_level">Chọn câu</string>
+    <string name="btn_regret">Hoàn tác</string>
+    <string name="btn_copy">Sao chép</string>
+    <string name="btn_repeat">Làm lại</string>
+    <string name="btn_analyze">Phân tích</string>
+    <string name="btn_unknown">Không biết</string>
+    <string name="btn_known">Đã biết</string>
+    <string name="analyze_title">Ta chỉ biết chút ít</string>
+    <string name="btn_back">Quay lại</string>
+    <string name="btn_reset">Làm lại</string>
+    <string name="btn_analyze_action">Phân tích</string>
+    <string name="cloud_db">Kho mây</string>
+    <string name="pikafish_title">🐟🐠🐡Pikafish🦈🎏🐬🐳🐋</string>
+    <string name="wrong_book_title">Sổ câu sai</string>
+    <string name="back">← Quay lại</string>
+    <string name="paste">📋 Dán</string>
+    <string name="export">📤 Xuất</string>
+    <string name="first_run_title">\u0020\u0020Tàn Cục 12: Đẹp và bền</string>
+    <string name="section_goal">Mục tiêu ván cờ</string>
+    <string name="goal_text">Cầm Đỏ: thắng; cầm Đen: giữ hòa.</string>
+    <string name="section_moves">Đi cờ và đánh dấu</string>
+    <string name="moves_text">“Sao chép”: sao chép FEN của thế cờ hiện tại;\n“Đã biết”: chuyển sang câu tiếp theo, tính là câu làm đúng;\n“Không biết”: câu hỏi vào sổ câu sai, tính là làm sai;\n“Làm lại”-nhấn giữ: tải câu trước;\n“Phân tích”: vào trang phân tích, tạm không tính vào thống kê.</string>
+    <string name="section_import_tiku">Nhập kho câu hỏi tùy chỉnh</string>
+    <string name="import_tiku_text">Đường dẫn thư mục Android: /storage/emulated/0/canju12/. Ứng dụng tự động tải kho câu hỏi txt trong thư mục canju12/tiku, mỗi dòng trong tệp txt là một FEN; bạn có thể thêm tệp kho câu hỏi txt vào thư mục này. Nếu muốn đi sau, có thể thêm hai ký tự 2# vào trước FEN (đặc biệt phù hợp để luyện các tàn cục cần giữ hòa, khi đó cần chuyển Đỏ thành bên tấn công).</string>
+    <string name="section_import_style">Nhập bàn cờ và quân cờ</string>
+    <string name="import_style_text">Ứng dụng tự động đọc tệp tài nguyên trong thư mục canju12/uistyle. Âm thanh đi cờ là move.mp3; mọi hình ảnh đều ở định dạng png, bàn cờ tên là board, nền là room, Xe Mã Pháo Tốt Tướng Sĩ Tượng Đỏ lần lượt là rr rn rc rp rk ra rb, Xe Mã Pháo Tốt Tướng Sĩ Tượng Đen lần lượt là br bn bc bp bk ba bb. Kích thước bàn cờ mặc định là 9:10, cũng hỗ trợ bàn cờ kích thước 678:750 của Thiên Thiên Tượng Kỳ.</string>
+    <string name="section_other">Chức năng khác</string>
+    <string name="other_text">Nhấn đúp biểu tượng Tướng Đỏ/Tướng Đen ở góc dưới bên trái để vào sổ câu sai;\nnhấn đúp Readme ở góc dưới bên phải để xem lời cảm ơn và hướng dẫn sử dụng.</string>
+    <string name="section_open_source">Tuyên bố mã nguồn mở và địa chỉ</string>
+    <string name="open_source_text">https://github.com/liudada1980/canju12\nTàn Cục 12 - Phần mềm luyện tàn cục cờ tướng Trung Quốc\nCopyright (C) 2026 Lưu Bá Thiên - Trường Sa\nChương trình này là phần mềm tự do: bạn có thể phân phối lại và/hoặc chỉnh sửa theo Giấy phép Công cộng GNU do Quỹ Phần mềm Tự do công bố, theo phiên bản 3 hoặc (theo lựa chọn của bạn) bất kỳ phiên bản nào sau đó. Chương trình được phân phối với hy vọng hữu ích nhưng KHÔNG CÓ BẢO ĐẢM; kể cả không có bảo đảm có thể bán được hoặc phù hợp với một mục đích cụ thể.\nXem Giấy phép Công cộng GNU để biết chi tiết.\nBạn nên nhận được một bản sao Giấy phép Công cộng GNU cùng chương trình. Nếu không, xem &lt;https://www.gnu.org/licenses/&gt;.</string>
+    <string name="cheer_long">🔥🔥Lưu Bá Thiên cổ vũ bạn!🔥🔥🔥</string>
+    <string name="tiku_name">Tên kho câu hỏi</string>
+    <string name="total_zero_questions">Tổng cộng 0 câu</string>
+    <string name="legend_done">\u0020Đã xong\u0020</string>
+    <string name="legend_current">\u0020Hiện tại\u0020</string>
+    <string name="legend_todo">\u0020Chưa xong</string>
+    <string name="tiku_prompt">Chọn kho câu hỏi để luyện tập:</string>
+    <string name="total_zero_tikus">Tổng cộng 0 kho câu hỏi</string>
+    <string name="index_placeholder">STT 1</string>
+    <string name="readme_intro">Đây là ứng dụng luyện tàn cục đẹp và bền, có thể luyện tập bằng kho câu hỏi tùy chỉnh, cũng có thể nhập âm thanh, nền, bàn cờ, quân cờ để quá trình luyện tập trở nên thoải mái và đẹp hơn. Các chức năng thường dùng như sau:</string>
+    <string name="readme_section_goal">Mục tiêu ván cờ:</string>
+    <string name="readme_section_custom_tiku">Kho câu hỏi tùy chỉnh:</string>
+    <string name="readme_custom_tiku">Đường dẫn thư mục Android: /storage/emulated/0/canju12/. Ứng dụng tự động tải kho câu hỏi txt trong thư mục canju12/tiku, mỗi dòng trong tệp txt là một FEN; bạn có thể thêm tệp kho câu hỏi txt vào thư mục này. Nếu muốn đi sau, có thể thêm hai ký tự 2# vào trước FEN (đặc biệt phù hợp để luyện các tàn cục cần giữ hòa, khi đó cần chuyển Đỏ thành bên tấn công).</string>
+    <string name="readme_section_custom_style">Tùy chỉnh âm thanh, nền, bàn cờ, quân cờ:</string>
+    <string name="readme_custom_style">Ứng dụng tự động đọc tệp tài nguyên trong thư mục canju12/uistyle. Âm thanh đi cờ là move.mp3; mọi hình ảnh đều ở định dạng png, bàn cờ tên là board, nền là room, Xe Mã Pháo Tốt Tướng Sĩ Tượng Đỏ lần lượt là rr rn rc rp rk ra rb, Xe Mã Pháo Tốt Tướng Sĩ Tượng Đen lần lượt là br bn bc bp bk ba bb. Kích thước bàn cờ mặc định là 9:10, cũng hỗ trợ bàn cờ kích thước 678:750 của Thiên Thiên Tượng Kỳ.</string>
+    <string name="readme_section_other">Chức năng khác:</string>
+    <string name="readme_other">Nhấn đúp biểu tượng Tướng Đỏ/Tướng Đen ở góc dưới bên trái để vào sổ câu sai;\nnhấn đúp Readme ở góc dưới bên phải để xem lời cảm ơn và hướng dẫn sử dụng.</string>
+    <string name="readme_section_thanks">Lời cảm ơn (không phân thứ tự):</string>
+    <string name="readme_thanks">Cảm ơn tác giả loạt phần mềm Trúc Tử như Trúc Tử Khai Cục, Trúc Tử Tăng Kỳ - Kalion; cảm ơn tác giả phần mềm xuất kỳ phổ Thiên Thiên Tượng Kỳ - qwert; cảm ơn tác giả Cờ Tướng Tối Giản - Tịch Huyễn; cảm ơn tác giả Thanh Dịch - Bộ Vũ; cảm ơn tác giả Dịch Tiềm - Thanh Đăng Cổ Quyển. Cảm ơn các bạn đã động viên và ủng hộ trong quá trình phát triển phần mềm này, cảm ơn các bạn đã viết nên những phần mềm mà tôi yêu thích. Cảm ơn các mô hình lớn như GLM, DeepSeek, Qianwen, Doubao; toàn bộ mã nguồn đều được viết sau khi tham khảo các mô hình lớn, đặc biệt cảm ơn GLM và DeepSeek đã viết phần lớn mã nguồn. Cảm ơn đại lão Hạ Thiêm và nhóm QQ Nghiên cứu Trí tuệ hóa Luyện tập Cờ tướng đã cung cấp kho câu hỏi phong phú. Cảm ơn nhóm phát triển pikafish đã cung cấp engine mã nguồn mở.</string>
+    <string name="readme_section_words">Lời muốn nói thêm:</string>
+    <string name="readme_words">Quá trình luyện tập rất nhàm chán, nhưng hãy nhớ:\n🔥🔥Lưu Bá Thiên cổ vũ bạn!🔥🔥🔥\nNếu có vấn đề về bản quyền, hãy đến nhóm QQ 635808985, nhóm QQ 1003608168, nhóm QQ 94846686 tìm tôi; có thắc mắc cũng có thể đến các nhóm QQ này tìm tôi.</string>
+    <string name="readme_section_license">Địa chỉ mã nguồn mở và ghi chú:</string>
+    <string name="readme_license">Tàn Cục 12 - Phần mềm luyện tàn cục cờ tướng Trung Quốc\nCopyright (C) 2026 Lưu Bá Thiên - Trường Sa\nChương trình này là phần mềm tự do: bạn có thể phân phối lại và/hoặc chỉnh sửa theo Giấy phép Công cộng GNU do Quỹ Phần mềm Tự do công bố, theo phiên bản 3 hoặc (theo lựa chọn của bạn) bất kỳ phiên bản nào sau đó. Chương trình được phân phối với hy vọng hữu ích nhưng KHÔNG CÓ BẢO ĐẢM; kể cả không có bảo đảm có thể bán được hoặc phù hợp với một mục đích cụ thể.\nXem Giấy phép Công cộng GNU để biết chi tiết.\nBạn nên nhận được một bản sao Giấy phép Công cộng GNU cùng chương trình. Nếu không, xem &lt;https://www.gnu.org/licenses/&gt;.</string>
+    <string name="readme_author">Lưu Bá Thiên tại Trường Sa</string>
+    <string name="readme_date">Ngày 20 tháng 6 năm 2026</string>
+
     <string-array name="quotes_array">
-        <item>🔥道可道，非常道；名可名，非常名。🔥🔥</item>
-        <item>🔥无名天地之始，有名万物之母。🔥🔥</item>
-        <item>🔥故常无欲，以观其妙；常有欲，以观其徼。🔥🔥</item>
-        <item>🔥有无相生，难易相成，长短相形，高下相倾。🔥🔥</item>
-        <item>🔥是以圣人处无为之事，行不言之教。🔥🔥</item>
-        <item>🔥不尚贤，使民不争；不贵难得之货，使民不为盗。🔥🔥</item>
-        <item>🔥虚其心，实其腹，弱其志，强其骨。🔥🔥</item>
-        <item>🔥为无为，则无不治。🔥🔥</item>
-        <item>🔥道冲而用之或不盈，渊兮似万物之宗。🔥🔥</item>
-        <item>🔥挫其锐，解其纷，和其光，同其尘。🔥🔥</item>
-        <item>🔥多言数穷，不如守中。🔥🔥</item>
-        <item>🔥谷神不死，是谓玄牝。🔥🔥</item>
-        <item>🔥上善若水，水善利万物而不争。🔥🔥</item>
-        <item>🔥夫唯不争，故无尤。🔥🔥</item>
-        <item>🔥持而盈之，不如其已；揣而锐之，不可长保。🔥🔥</item>
-        <item>🔥金玉满堂，莫之能守；富贵而骄，自遗其咎。🔥🔥</item>
-        <item>🔥功成名遂身退，天之道。🔥🔥</item>
-        <item>🔥载营魄抱一，能无离乎？专气致柔，能如婴儿乎？🔥🔥</item>
-        <item>🔥三十辐共一毂，当其无，有车之用。🔥🔥</item>
-        <item>🔥五色令人目盲，五音令人耳聋，五味令人口爽。🔥🔥</item>
-        <item>🔥是以圣人为腹不为目，故去彼取此。🔥🔥</item>
-        <item>🔥宠辱若惊，贵大患若身。🔥🔥</item>
-        <item>🔥执古之道，以御今之有。🔥🔥</item>
-        <item>🔥大道废，有仁义；智慧出，有大伪。🔥🔥</item>
-        <item>🔥绝圣弃智，民利百倍；绝仁弃义，民复孝慈。🔥🔥</item>
-        <item>🔥见素抱朴，少私寡欲。🔥🔥</item>
-        <item>🔥唯之与阿，相去几何？善之与恶，相去若何？🔥🔥</item>
-        <item>🔥我独异于人，而贵食母。🔥🔥</item>
-        <item>🔥孔德之容，惟道是从。🔥🔥</item>
-        <item>🔥道之为物，惟恍惟惚。🔥🔥</item>
-        <item>🔥企者不立，跨者不行。🔥🔥</item>
-        <item>🔥自见者不明，自是者不彰。🔥🔥</item>
-        <item>🔥人法地，地法天，天法道，道法自然。🔥🔥</item>
-        <item>🔥重为轻根，静为躁君。🔥🔥</item>
-        <item>🔥轻则失本，躁则失君。🔥🔥</item>
-        <item>🔥善行无辙迹，善言无瑕谪。🔥🔥</item>
-        <item>🔥是以圣人常善救人，故无弃人；常善救物，故无弃物。🔥🔥</item>
-        <item>🔥知其雄，守其雌，为天下溪。🔥🔥</item>
-        <item>🔥将欲取天下而为之，吾见其不得已。🔥🔥</item>
-        <item>🔥天下神器，不可为也，不可执也。🔥🔥</item>
-        <item>🔥物壮则老，谓之不道，不道早已。🔥🔥</item>
-        <item>🔥以道佐人主者，不以兵强天下。🔥🔥</item>
-        <item>🔥师之所处，荆棘生焉；大军之后，必有凶年。🔥🔥</item>
-        <item>🔥胜而不美，而美之者，是乐杀人。🔥🔥</item>
-        <item>🔥知人者智，自知者明。🔥🔥</item>
-        <item>🔥胜人者有力，自胜者强。🔥🔥</item>
-        <item>🔥知足者富，强行者有志。🔥🔥</item>
-        <item>🔥大道泛兮，其可左右。🔥🔥</item>
-        <item>🔥万物归焉而不为主，可名为大。🔥🔥</item>
-        <item>🔥执大象，天下往。🔥🔥</item>
-        <item>🔥将欲歙之，必固张之；将欲弱之，必固强之。🔥🔥</item>
-        <item>🔥柔弱胜刚强，鱼不可脱于渊。🔥🔥</item>
-        <item>🔥道常无为而无不为。🔥🔥</item>
-        <item>🔥侯王若能守之，万物将自化。🔥🔥</item>
-        <item>🔥化而欲作，吾将镇之以无名之朴。🔥🔥</item>
-        <item>🔥上德不德，是以有德；下德不失德，是以无德。🔥🔥</item>
-        <item>🔥上德无为而无以为，下德为之而有以为。🔥🔥</item>
-        <item>🔥昔之得一者：天得一以清，地得一以宁。🔥🔥</item>
-        <item>🔥贵以贱为本，高以下为基。🔥🔥</item>
-        <item>🔥反者道之动，弱者道之用。🔥🔥</item>
-        <item>🔥天下万物生于有，有生于无。🔥🔥</item>
-        <item>🔥上士闻道，勤而行之；中士闻道，若存若亡。🔥🔥</item>
-        <item>🔥大方无隅，大器晚成，大音希声，大象无形。🔥🔥</item>
-        <item>🔥道隐无名，夫唯道，善贷且成。🔥🔥</item>
-        <item>🔥祸兮福之所倚，福兮祸之所伏。🔥🔥</item>
-        <item>🔥正复为奇，善复为妖。🔥🔥</item>
-        <item>🔥治人事天，莫若啬。🔥🔥</item>
-        <item>🔥治大国，若烹小鲜。🔥🔥</item>
-        <item>🔥千里之行，始于足下。🔥🔥</item>
-        <item>🔥为学日益，为道日损。🔥🔥</item>
-        <item>🔥损之又损，以至于无为，无为而无不为。🔥🔥</item>
-        <item>🔥天下之至柔，驰骋天下之至坚。🔥🔥</item>
-        <item>🔥甚爱必大费，多藏必厚亡。🔥🔥</item>
-        <item>🔥知足不辱，知止不殆，可以长久。🔥🔥</item>
-        <item>🔥大成若缺，其用不弊；大盈若冲，其用不穷。🔥🔥</item>
-        <item>🔥大直若屈，大巧若拙，大辩若讷。🔥🔥</item>
-        <item>🔥不出户，知天下；不窥牖，见天道。🔥🔥</item>
-        <item>🔥为学者日益，为道者日损。🔥🔥</item>
-        <item>🔥圣人无常心，以百姓心为心。🔥🔥</item>
-        <item>🔥善者不辩，辩者不善。🔥🔥</item>
-        <item>🔥知者不博，博者不知。🔥🔥</item>
-        <item>🔥信言不美，美言不信。🔥🔥</item>
-        <item>🔥既以为人己愈有，既以与人己愈多。🔥🔥</item>
-        <item>🔥天之道，利而不害；圣人之道，为而不争。🔥🔥</item>
-        <item>🔥天道无亲，常与善人。🔥🔥</item>
-        <item>🔥慈故能勇，俭故能广，不敢为天下先。🔥🔥</item>
-        <item>🔥善建者不拔，善抱者不脱。🔥🔥</item>
-        <item>🔥修之于身，其德乃真；修之于家，其德乃余。🔥🔥</item>
-        <item>🔥含德之厚，比于赤子。🔥🔥</item>
-        <item>🔥慎终如始，则无败事。🔥🔥</item>
-        <item>🔥图难于其易，为大于其细。🔥🔥</item>
-        <item>🔥合抱之木，生于毫末；九层之台，起于累土。🔥🔥</item>
-        <item>🔥道可道，非常道；名可名，非常名。🔥🔥</item>
-        <item>🔥无名，天地之始；有名，万物之母。🔥🔥</item>
-        <item>🔥常无欲，以观其妙；常有欲，以观其徼。🔥🔥</item>
-        <item>🔥玄之又玄，众妙之门。🔥🔥</item>
-        <item>🔥天下皆知美之为美，斯恶已。🔥🔥</item>
-        <item>🔥有无相生，难易相成，长短相形。🔥🔥</item>
-        <item>🔥圣人处无为之事，行不言之教。🔥🔥</item>
-        <item>🔥不尚贤，使民不争。🔥🔥</item>
-        <item>🔥不贵难得之货，使民不为盗。🔥🔥</item>
-        <item>🔥虚其心，实其腹，弱其志，强其骨。🔥🔥</item>
-        <item>🔥为无为，则无不治。🔥🔥</item>
-        <item>🔥道冲，而用之或不盈。🔥🔥</item>
-        <item>🔥挫其锐，解其纷，和其光，同其尘。🔥🔥</item>
-        <item>🔥天地不仁，以万物为刍狗。🔥🔥</item>
-        <item>🔥圣人不仁，以百姓为刍狗。🔥🔥</item>
-        <item>🔥多言数穷，不如守中。🔥🔥</item>
-        <item>🔥谷神不死，是谓玄牝。🔥🔥</item>
-        <item>🔥天长地久，以其不自生，故长生。🔥🔥</item>
-        <item>🔥圣人后其身而身先，外其身而身存。🔥🔥</item>
-        <item>🔥上善若水，水善利万物而不争。🔥🔥</item>
-        <item>🔥夫唯不争，故无尤。🔥🔥</item>
-        <item>🔥持而盈之，不如其已。揣而锐之，不可长保。🔥🔥</item>
-        <item>🔥金玉满堂，莫之能守。富贵而骄，自遗其咎。🔥🔥</item>
-        <item>🔥功遂身退，天之道。🔥🔥</item>
-        <item>🔥载营魄抱一，能无离乎？🔥🔥</item>
-        <item>🔥专气致柔，能如婴儿乎？🔥🔥</item>
-        <item>🔥涤除玄览，能无疵乎？🔥🔥</item>
-        <item>🔥天门开阖，能为雌乎？🔥🔥</item>
-        <item>🔥有之以为利，无之以为用。🔥🔥</item>
-        <item>🔥五色令人目盲，五音令人耳聋。🔥🔥</item>
-        <item>🔥五味令人口爽，驰骋令人心狂。🔥🔥</item>
-        <item>🔥圣人为腹不为目，去彼取此。🔥🔥</item>
-        <item>🔥宠辱若惊，贵大患若身。🔥🔥</item>
-        <item>🔥吾所以有大患，为吾有身。🔥🔥</item>
-        <item>🔥及吾无身，吾有何患？🔥🔥</item>
-        <item>🔥贵以身为天下，若可寄天下。🔥🔥</item>
-        <item>🔥爱以身为天下，若可托天下。🔥🔥</item>
-        <item>🔥迎之不见其首，随之不见其后。🔥🔥</item>
-        <item>🔥执古之道，以御今之有。🔥🔥</item>
-        <item>🔥曲则全，枉则直，洼则盈，敝则新。🔥🔥</item>
-        <item>🔥少则得，多则惑。🔥🔥</item>
-        <item>🔥圣人抱一，为天下式。🔥🔥</item>
-        <item>🔥不自见，故明；不自是，故彰。🔥🔥</item>
-        <item>🔥不自伐，故有功；不自矜，故长。🔥🔥</item>
-        <item>🔥夫唯不争，天下莫能与之争。🔥🔥</item>
-        <item>🔥希言自然，飘风不终朝，骤雨不终日。🔥🔥</item>
-        <item>🔥企者不立，跨者不行。🔥🔥</item>
-        <item>🔥自见者不明，自是者不彰。🔥🔥</item>
-        <item>🔥自伐者无功，自矜者不长。🔥🔥</item>
-        <item>🔥有物混成，先天地生。🔥🔥</item>
-        <item>🔥寂兮寥兮，独立而不改。🔥🔥</item>
-        <item>🔥周行而不殆，可以为天地母。🔥🔥</item>
-        <item>🔥人法地，地法天，天法道，道法自然。🔥🔥</item>
-        <item>🔥重为轻根，静为躁君。轻则失根，躁则失君。🔥🔥</item>
-        <item>🔥善行无辙迹，善言无瑕谪。🔥🔥</item>
-        <item>🔥善数不用筹策，善闭无关楗。🔥🔥</item>
-        <item>🔥善结无绳约，而不可解。🔥🔥</item>
-        <item>🔥常善救人，故无弃人。常善救物，故无弃物。🔥🔥</item>
-        <item>🔥知其雄，守其雌，为天下溪。🔥🔥</item>
-        <item>🔥知其白，守其黑，为天下式。🔥🔥</item>
-        <item>🔥知其荣，守其辱，为天下谷。🔥🔥</item>
-        <item>🔥去奢，去泰，去甚。🔥🔥</item>
-        <item>🔥天下神器，不可为也，不可执也。🔥🔥</item>
-        <item>🔥为者败之，执者失之。🔥🔥</item>
-        <item>🔥以道佐人主，不以兵强天下。🔥🔥</item>
-        <item>🔥师之所处，荆棘生焉。大军之后，必有凶年。🔥🔥</item>
-        <item>🔥兵者不祥之器，不得已而用之。🔥🔥</item>
-        <item>🔥恬淡为上，胜而不美。🔥🔥</item>
-        <item>🔥道常无名，朴虽小，天下莫能臣。🔥🔥</item>
-        <item>🔥侯王若能守之，万物将自宾。🔥🔥</item>
-        <item>🔥天地相合，以降甘露。🔥🔥</item>
-        <item>🔥道常无为，而无不为。🔥🔥</item>
-        <item>🔥侯王若能守，万物自化。🔥🔥</item>
-        <item>🔥将欲歙之，必固张之。将欲弱之，必固强之。🔥🔥</item>
-        <item>🔥将欲废之，必固兴之。将欲取之，必固与之。🔥🔥</item>
-        <item>🔥鱼不可脱于渊，国利器不示人。🔥🔥</item>
-        <item>🔥上德不德，是以有德。下德不失德，是以无德。🔥🔥</item>
-        <item>🔥失道而后德，失德而后仁。失仁而后义，失义而后礼。🔥🔥</item>
-        <item>🔥礼者，忠信之薄，而乱之首。🔥🔥</item>
-        <item>🔥大丈夫处其厚，不居其薄。🔥🔥</item>
-        <item>🔥居其实，不居其华。🔥🔥</item>
-        <item>🔥反者道之动，弱者道之用。🔥🔥</item>
-        <item>🔥天下万物生于有，有生于无。🔥🔥</item>
-        <item>🔥上士闻道，勤而行之。🔥🔥</item>
-        <item>🔥中士闻道，若存若亡。🔥🔥</item>
-        <item>🔥下士闻道，大笑之。🔥🔥</item>
-        <item>🔥明道若昧，进道若退，夷道若颣。🔥🔥</item>
-        <item>🔥上德若谷，大白若辱，广德若不足。🔥🔥</item>
-        <item>🔥大方无隅，大器晚成，大音希声。🔥🔥</item>
-        <item>🔥大象无形，道隐无名。🔥🔥</item>
-        <item>🔥夫唯道，善贷且成。🔥🔥</item>
-        <item>🔥道生一，一生二，二生三，三生万物。🔥🔥</item>
-        <item>🔥万物负阴而抱阳，冲气以为和。🔥🔥</item>
-        <item>🔥天下有道，却走马以粪。🔥🔥</item>
-        <item>🔥天下无道，戎马生于郊。🔥🔥</item>
-        <item>🔥罪莫大于可欲，祸莫大于不知足。🔥🔥</item>
-        <item>🔥咎莫大于欲得，知足之足常足矣。🔥🔥</item>
-        <item>🔥不出户，知天下；不窥牖，见天道。🔥🔥</item>
-        <item>🔥其出弥远，其知弥少。🔥🔥</item>
-        <item>🔥圣人不行而知，不见而明，不为而成。🔥🔥</item>
-        <item>🔥为学日益，为道日损。🔥🔥</item>
-        <item>🔥损之又损，以至于无为。🔥🔥</item>
-        <item>🔥取天下常以无事，及其有事，不足以取天下。🔥🔥</item>
-        <item>🔥圣人无常心，以百姓心为心。🔥🔥</item>
-        <item>🔥善者吾善之，不善者吾亦善之。🔥🔥</item>
-        <item>🔥信者吾信之，不信者吾亦信之。🔥🔥</item>
-        <item>🔥圣人在天下，歙歙焉，为天下浑其心。🔥🔥</item>
-        <item>🔥百姓皆注其耳目，圣人皆孩之。🔥🔥</item>
-        <item>🔥出生入死，生之徒十有三。🔥🔥</item>
-        <item>🔥道生之，德畜之，物形之，势成之。🔥🔥</item>
-        <item>🔥万物莫不尊道而贵德。🔥🔥</item>
-        <item>🔥道生而不有，为而不恃，长而不宰。🔥🔥</item>
-        <item>🔥天下有始，以为天下母。🔥🔥</item>
-        <item>🔥既得其母，以知其子；既知其子，复守其母。🔥🔥</item>
-        <item>🔥塞其兑，闭其门，终身不勤。🔥🔥</item>
-        <item>🔥开其兑，济其事，终身不救。🔥🔥</item>
-        <item>🔥见小曰明，守柔曰强。🔥🔥</item>
-        <item>🔥用其光，复归其明，无遗身殃。🔥🔥</item>
-        <item>🔥使我介然有知，行于大道，唯施是畏。🔥🔥</item>
-        <item>🔥大道甚夷，而人好径。🔥🔥</item>
-        <item>🔥善建者不拔，善抱者不脱。🔥🔥</item>
-        <item>🔥修之于身，其德乃真。修之于家，其德乃余。🔥🔥</item>
-        <item>🔥修之于乡，其德乃长。修之于邦，其德乃丰。🔥🔥</item>
-        <item>🔥修之于天下，其德乃普。🔥🔥</item>
-        <item>🔥知人者智，自知者明。胜人者有力，自胜者强。🔥🔥</item>
-        <item>🔥知足者富，强行者有志。🔥🔥</item>
-        <item>🔥不失其所者久，死而不亡者寿。🔥🔥</item>
-        <item>🔥大道泛兮，其可左右。🔥🔥</item>
-        <item>🔥万物恃之以生而不辞，功成而不有。🔥🔥</item>
-        <item>🔥衣养万物而不为主，可名于小。🔥🔥</item>
-        <item>🔥万物归焉而不为主，可名为大。🔥🔥</item>
-        <item>🔥执大象，天下往。往而不害，安平泰。🔥🔥</item>
-        <item>🔥乐与饵，过客止。道之出口，淡乎无味。🔥🔥</item>
-        <item>🔥视之不足见，听之不足闻，用之不足既。🔥🔥</item>
+        <item>🔥Đạo khả đạo, phi thường Đạo; danh khả danh, phi thường danh.🔥🔥</item>
+        <item>🔥Không tên là khởi đầu trời đất; có tên là mẹ của muôn vật.🔥🔥</item>
+        <item>🔥Nên thường không ham muốn để thấy sự huyền diệu; thường có ham muốn để thấy chỗ biên giới.🔥🔥</item>
+        <item>🔥Có và không sinh ra nhau, khó và dễ tạo thành nhau, dài và ngắn so nhau, cao và thấp nghiêng nhau.🔥🔥</item>
+        <item>🔥Nên thánh nhân làm việc vô vi, dạy bằng lời không nói.🔥🔥</item>
+        <item>🔥Không trọng người hiền để dân không tranh; không quý của khó được để dân không trộm.🔥🔥</item>
+        <item>🔥Làm lòng họ trống, làm bụng họ đầy, làm chí họ yếu, làm xương họ mạnh.🔥🔥</item>
+        <item>🔥Làm theo vô vi thì không gì không trị.🔥🔥</item>
+        <item>🔥Đạo trống mà dùng có khi không đầy, sâu thẳm như tổ tông muôn vật.🔥🔥</item>
+        <item>🔥Mài bớt sắc bén, gỡ rối rắm, hòa ánh sáng, đồng cùng bụi.🔥🔥</item>
+        <item>🔥Nói nhiều thì cùng đường, chi bằng giữ trung.🔥🔥</item>
+        <item>🔥Thần hang không chết, gọi là cái mẹ huyền diệu.🔥🔥</item>
+        <item>🔥Thiện cao nhất như nước, nước khéo làm lợi muôn vật mà không tranh.🔥🔥</item>
+        <item>🔥Chỉ vì không tranh nên không lỗi.🔥🔥</item>
+        <item>🔥Giữ mà làm đầy, chi bằng thôi; mài mà làm sắc, không thể giữ lâu.🔥🔥</item>
+        <item>🔥Vàng ngọc đầy nhà, không ai giữ được; giàu sang mà kiêu, tự chuốc lỗi.🔥🔥</item>
+        <item>🔥Công thành danh toại thì lui thân, ấy là đạo trời.🔥🔥</item>
+        <item>🔥Ôm một với hồn phách, có thể không lìa? Chuyên khí làm mềm, có thể như trẻ sơ sinh?🔥🔥</item>
+        <item>🔥Ba mươi nan hoa chung một bầu xe, nhờ chỗ trống mà xe dùng được.🔥🔥</item>
+        <item>🔥Năm màu làm mắt mù, năm âm làm tai điếc, năm vị làm miệng mất vị.🔥🔥</item>
+        <item>🔥Nên thánh nhân lo cho bụng không lo cho mắt, bỏ kia chọn này.🔥🔥</item>
+        <item>🔥Được yêu hay bị nhục đều như giật mình, coi hoạn lớn như thân mình.🔥🔥</item>
+        <item>🔥Nắm đạo xưa để trị việc nay.🔥🔥</item>
+        <item>🔥Đạo lớn bị bỏ thì có nhân nghĩa; trí khôn xuất hiện thì có giả dối lớn.🔥🔥</item>
+        <item>🔥Bỏ thánh bỏ trí, dân lợi trăm lần; bỏ nhân bỏ nghĩa, dân lại hiếu thảo.🔥🔥</item>
+        <item>🔥Thấy chất phác, ôm mộc mạc, ít tham riêng, ít ham muốn.🔥🔥</item>
+        <item>🔥Dạ và vâng, cách nhau bao nhiêu? Thiện và ác, cách nhau thế nào?🔥🔥</item>
+        <item>🔥Ta riêng khác người, mà quý nuôi dưỡng từ mẹ Đạo.🔥🔥</item>
+        <item>🔥Dung mạo của đức lớn, chỉ theo Đạo.🔥🔥</item>
+        <item>🔥Đạo là một vật, chỉ mờ chỉ ảo.🔥🔥</item>
+        <item>🔥Kiễng chân không đứng vững, sải bước không đi xa.🔥🔥</item>
+        <item>🔥Tự thấy mình thì không sáng, tự cho mình đúng thì không rạng.🔥🔥</item>
+        <item>🔥Người theo đất, đất theo trời, trời theo Đạo, Đạo theo tự nhiên.🔥🔥</item>
+        <item>🔥Nặng là gốc của nhẹ, tĩnh là chủ của nóng.🔥🔥</item>
+        <item>🔥Nhẹ thì mất gốc, nóng thì mất chủ.🔥🔥</item>
+        <item>🔥Đi khéo không để dấu vết, nói khéo không có lỗi chê.🔥🔥</item>
+        <item>🔥Nên thánh nhân khéo cứu người nên không bỏ ai; khéo cứu vật nên không bỏ vật.🔥🔥</item>
+        <item>🔥Biết cái mạnh, giữ cái mềm, làm khe suối cho thiên hạ.🔥🔥</item>
+        <item>🔥Toan lấy thiên hạ mà làm, ta thấy không thể được.🔥🔥</item>
+        <item>🔥Thiên hạ là khí thiêng, không thể làm, không thể nắm.🔥🔥</item>
+        <item>🔥Vật mạnh thì già, ấy là trái Đạo, trái Đạo thì sớm diệt.🔥🔥</item>
+        <item>🔥Người giúp chủ bằng Đạo, không dùng binh mạnh với thiên hạ.🔥🔥</item>
+        <item>🔥Nơi quân đi qua, gai góc mọc lên; sau đại quân, ắt có năm hung.🔥🔥</item>
+        <item>🔥Thắng mà không cho là đẹp, cho là đẹp tức là thích giết người.🔥🔥</item>
+        <item>🔥Biết người là trí, biết mình là sáng.🔥🔥</item>
+        <item>🔥Thắng người là có sức, thắng mình là mạnh.🔥🔥</item>
+        <item>🔥Biết đủ là giàu, cố gắng là có chí.🔥🔥</item>
+        <item>🔥Đạo lớn tràn khắp, có thể sang trái phải.🔥🔥</item>
+        <item>🔥Muôn vật quy về mà không làm chủ, có thể gọi là lớn.🔥🔥</item>
+        <item>🔥Nắm hình tượng lớn, thiên hạ hướng về.🔥🔥</item>
+        <item>🔥Muốn thu lại, ắt trước phải mở ra; muốn làm yếu, ắt trước phải làm mạnh.🔥🔥</item>
+        <item>🔥Mềm yếu thắng cứng mạnh, cá không thể rời vực.🔥🔥</item>
+        <item>🔥Đạo thường vô vi mà không gì không làm.🔥🔥</item>
+        <item>🔥Vua chúa nếu giữ được, muôn vật sẽ tự hóa.🔥🔥</item>
+        <item>🔥Hóa mà muốn khởi, ta sẽ trấn bằng chất mộc không tên.🔥🔥</item>
+        <item>🔥Đức cao không cho là có đức nên có đức; đức thấp không mất đức nên không có đức.🔥🔥</item>
+        <item>🔥Đức cao vô vi mà không cố làm, đức thấp làm mà cố làm.🔥🔥</item>
+        <item>🔥Xưa kia được một: trời được một nên trong, đất được một nên yên.🔥🔥</item>
+        <item>🔥Quý lấy hèn làm gốc, cao lấy thấp làm nền.🔥🔥</item>
+        <item>🔥Trở lại là động của Đạo, mềm yếu là dụng của Đạo.🔥🔥</item>
+        <item>🔥Muôn vật trong thiên hạ sinh từ có, có sinh từ không.🔥🔥</item>
+        <item>🔥Bậc thượng nghe Đạo, siêng làm; bậc trung nghe Đạo, nửa còn nửa mất.🔥🔥</item>
+        <item>🔥Vuông lớn không góc, đồ lớn thành muộn, âm lớn ít tiếng, tượng lớn không hình.🔥🔥</item>
+        <item>🔥Đạo ẩn không tên, chỉ Đạo khéo ban cho và làm thành.🔥🔥</item>
+        <item>🔥Họa là chỗ tựa của phúc, phúc là chỗ ẩn của họa.🔥🔥</item>
+        <item>🔥Chính lại thành lạ, thiện lại thành yêu.🔥🔥</item>
+        <item>🔥Trị người thờ trời, không gì bằng tiết kiệm.🔥🔥</item>
+        <item>🔥Trị nước lớn như nấu cá nhỏ.🔥🔥</item>
+        <item>🔥Hành trình ngàn dặm bắt đầu từ bước chân.🔥🔥</item>
+        <item>🔥Học thì mỗi ngày thêm, theo Đạo thì mỗi ngày bớt.🔥🔥</item>
+        <item>🔥Bớt rồi lại bớt, đến chỗ vô vi, vô vi mà không gì không làm.🔥🔥</item>
+        <item>🔥Cái mềm nhất thiên hạ chạy xuyên cái cứng nhất thiên hạ.🔥🔥</item>
+        <item>🔥Yêu nhiều ắt tốn lớn, chứa nhiều ắt mất nhiều.🔥🔥</item>
+        <item>🔥Biết đủ không nhục, biết dừng không nguy, có thể lâu dài.🔥🔥</item>
+        <item>🔥Thành lớn như thiếu, dùng không hư; đầy lớn như trống, dùng không cùng.🔥🔥</item>
+        <item>🔥Thẳng lớn như cong, khéo lớn như vụng, biện lớn như chậm.🔥🔥</item>
+        <item>🔥Không ra cửa mà biết thiên hạ; không nhìn cửa sổ mà thấy đạo trời.🔥🔥</item>
+        <item>🔥Người học mỗi ngày thêm, người theo Đạo mỗi ngày bớt.🔥🔥</item>
+        <item>🔥Thánh nhân không có lòng cố định, lấy lòng dân làm lòng mình.🔥🔥</item>
+        <item>🔥Người thiện không tranh biện, người tranh biện không thiện.🔥🔥</item>
+        <item>🔥Người biết không rộng, người rộng không biết.🔥🔥</item>
+        <item>🔥Lời thật không đẹp, lời đẹp không thật.🔥🔥</item>
+        <item>🔥Càng vì người mình càng có, càng cho người mình càng nhiều.🔥🔥</item>
+        <item>🔥Đạo trời lợi mà không hại; đạo thánh làm mà không tranh.🔥🔥</item>
+        <item>🔥Đạo trời không thân ai, thường ở với người thiện.🔥🔥</item>
+        <item>🔥Vì từ nên dũng, vì kiệm nên rộng, không dám đứng trước thiên hạ.🔥🔥</item>
+        <item>🔥Người dựng khéo không bị giật, người ôm khéo không bị tuột.🔥🔥</item>
+        <item>🔥Tu ở thân, đức mới thật; tu ở nhà, đức mới dư.🔥🔥</item>
+        <item>🔥Người chứa đức dày, như trẻ sơ sinh.🔥🔥</item>
+        <item>🔥Cẩn thận cuối như đầu thì không có việc hỏng.🔥🔥</item>
+        <item>🔥Mưu việc khó từ lúc dễ, làm việc lớn từ lúc nhỏ.🔥🔥</item>
+        <item>🔥Cây ôm vòng sinh từ mầm nhỏ; đài chín tầng khởi từ đất đắp.🔥🔥</item>
+        <item>🔥Đạo khả đạo, phi thường Đạo; danh khả danh, phi thường danh.🔥🔥</item>
+        <item>🔥Không tên là đầu trời đất; có tên là mẹ muôn vật.🔥🔥</item>
+        <item>🔥Thường không ham muốn để thấy huyền diệu; thường ham muốn để thấy biên giới.🔥🔥</item>
+        <item>🔥Huyền lại càng huyền, cửa của mọi huyền diệu.🔥🔥</item>
+        <item>🔥Thiên hạ đều biết đẹp là đẹp, thế là có xấu.🔥🔥</item>
+        <item>🔥Có không sinh nhau, khó dễ thành nhau, dài ngắn so nhau.🔥🔥</item>
+        <item>🔥Thánh nhân làm việc vô vi, dạy bằng lời không nói.🔥🔥</item>
+        <item>🔥Không trọng người hiền để dân không tranh.🔥🔥</item>
+        <item>🔥Không quý của khó được để dân không trộm.🔥🔥</item>
+        <item>🔥Làm lòng họ trống, làm bụng họ đầy, làm chí họ yếu, làm xương họ mạnh.🔥🔥</item>
+        <item>🔥Làm theo vô vi thì không gì không trị.🔥🔥</item>
+        <item>🔥Đạo trống, dùng mà có khi không đầy.🔥🔥</item>
+        <item>🔥Mài bớt sắc bén, gỡ rối rắm, hòa ánh sáng, đồng cùng bụi.🔥🔥</item>
+        <item>🔥Trời đất không nhân, coi muôn vật như chó rơm.🔥🔥</item>
+        <item>🔥Thánh nhân không nhân, coi trăm họ như chó rơm.🔥🔥</item>
+        <item>🔥Nói nhiều thì cùng đường, chi bằng giữ trung.🔥🔥</item>
+        <item>🔥Thần hang không chết, gọi là cái mẹ huyền diệu.🔥🔥</item>
+        <item>🔥Trời dài đất lâu, vì không sống cho mình nên trường sinh.🔥🔥</item>
+        <item>🔥Thánh nhân đặt thân sau mà thân trước, bỏ thân mà thân còn.🔥🔥</item>
+        <item>🔥Thiện cao nhất như nước, nước khéo làm lợi muôn vật mà không tranh.🔥🔥</item>
+        <item>🔥Chỉ vì không tranh nên không lỗi.🔥🔥</item>
+        <item>🔥Giữ mà làm đầy, chi bằng thôi. Mài mà làm sắc, không giữ lâu.🔥🔥</item>
+        <item>🔥Vàng ngọc đầy nhà, không ai giữ được. Giàu sang mà kiêu, tự chuốc lỗi.🔥🔥</item>
+        <item>🔥Công thành thì lui thân, ấy là đạo trời.🔥🔥</item>
+        <item>🔥Ôm hồn phách giữ một, có thể không lìa?🔥🔥</item>
+        <item>🔥Chuyên khí làm mềm, có thể như trẻ sơ sinh?🔥🔥</item>
+        <item>🔥Rửa sạch tâm huyền, có thể không tì vết?🔥🔥</item>
+        <item>🔥Cửa trời mở đóng, có thể làm cái mềm?🔥🔥</item>
+        <item>🔥Có để làm lợi, không để làm dụng.🔥🔥</item>
+        <item>🔥Năm màu làm mắt mù, năm âm làm tai điếc.🔥🔥</item>
+        <item>🔥Năm vị làm miệng mất vị, ruổi rong làm lòng điên.🔥🔥</item>
+        <item>🔥Thánh nhân lo bụng không lo mắt, bỏ kia chọn này.🔥🔥</item>
+        <item>🔥Được yêu hay bị nhục đều như giật mình, coi hoạn lớn như thân mình.🔥🔥</item>
+        <item>🔥Ta có hoạn lớn vì ta có thân.🔥🔥</item>
+        <item>🔥Đến khi ta không thân, ta có hoạn gì?🔥🔥</item>
+        <item>🔥Quý thân vì thiên hạ, có thể gửi thiên hạ.🔥🔥</item>
+        <item>🔥Yêu thân vì thiên hạ, có thể giao thiên hạ.🔥🔥</item>
+        <item>🔥Đón không thấy đầu, theo không thấy đuôi.🔥🔥</item>
+        <item>🔥Nắm đạo xưa để trị việc nay.🔥🔥</item>
+        <item>🔥Cong thì toàn, oan thì ngay, trũng thì đầy, cũ thì mới.🔥🔥</item>
+        <item>🔥Ít thì được, nhiều thì mê.🔥🔥</item>
+        <item>🔥Thánh nhân ôm một, làm khuôn mẫu cho thiên hạ.🔥🔥</item>
+        <item>🔥Không tự thấy mình nên sáng; không tự cho đúng nên rạng.🔥🔥</item>
+        <item>🔥Không tự khoe nên có công; không tự kiêu nên lâu dài.🔥🔥</item>
+        <item>🔥Chỉ vì không tranh, thiên hạ không ai tranh được.🔥🔥</item>
+        <item>🔥Ít nói hợp tự nhiên, gió lốc không hết buổi sáng, mưa dữ không hết ngày.🔥🔥</item>
+        <item>🔥Kiễng chân không đứng vững, sải bước không đi xa.🔥🔥</item>
+        <item>🔥Tự thấy mình thì không sáng, tự cho mình đúng thì không rạng.🔥🔥</item>
+        <item>🔥Tự khoe không công, tự kiêu không lâu.🔥🔥</item>
+        <item>🔥Có vật hỗn thành, sinh trước trời đất.🔥🔥</item>
+        <item>🔥Lặng lẽ trống trải, đứng riêng mà không đổi.🔥🔥</item>
+        <item>🔥Đi vòng không mỏi, có thể làm mẹ trời đất.🔥🔥</item>
+        <item>🔥Người theo đất, đất theo trời, trời theo Đạo, Đạo theo tự nhiên.🔥🔥</item>
+        <item>🔥Nặng là gốc của nhẹ, tĩnh là chủ của nóng. Nhẹ thì mất gốc, nóng thì mất chủ.🔥🔥</item>
+        <item>🔥Đi khéo không để dấu vết, nói khéo không có lỗi chê.🔥🔥</item>
+        <item>🔥Khéo tính không dùng que đếm, khéo đóng không cần then.🔥🔥</item>
+        <item>🔥Khéo buộc không dây mà không gỡ được.🔥🔥</item>
+        <item>🔥Thường khéo cứu người nên không bỏ ai. Thường khéo cứu vật nên không bỏ vật.🔥🔥</item>
+        <item>🔥Biết cái mạnh, giữ cái mềm, làm khe suối cho thiên hạ.🔥🔥</item>
+        <item>🔥Biết cái trắng, giữ cái đen, làm khuôn mẫu thiên hạ.🔥🔥</item>
+        <item>🔥Biết vinh, giữ nhục, làm hang cho thiên hạ.🔥🔥</item>
+        <item>🔥Bỏ xa hoa, bỏ quá độ, bỏ cực đoan.🔥🔥</item>
+        <item>🔥Thiên hạ là khí thiêng, không thể làm, không thể nắm.🔥🔥</item>
+        <item>🔥Kẻ làm thì hỏng, kẻ nắm thì mất.🔥🔥</item>
+        <item>🔥Giúp chủ bằng Đạo, không dùng binh mạnh với thiên hạ.🔥🔥</item>
+        <item>🔥Nơi quân ở, gai góc mọc. Sau đại quân, ắt có năm hung.🔥🔥</item>
+        <item>🔥Binh là khí bất tường, bất đắc dĩ mới dùng.🔥🔥</item>
+        <item>🔥Điềm đạm là hơn, thắng mà không cho là đẹp.🔥🔥</item>
+        <item>🔥Đạo thường không tên, mộc mạc tuy nhỏ, thiên hạ không ai bắt phục.🔥🔥</item>
+        <item>🔥Vua chúa nếu giữ được, muôn vật sẽ tự phục.🔥🔥</item>
+        <item>🔥Trời đất hòa nhau, giáng sương ngọt.🔥🔥</item>
+        <item>🔥Đạo thường vô vi mà không gì không làm.🔥🔥</item>
+        <item>🔥Vua chúa nếu giữ được, muôn vật tự hóa.🔥🔥</item>
+        <item>🔥Muốn thu lại, ắt trước mở ra. Muốn làm yếu, ắt trước làm mạnh.🔥🔥</item>
+        <item>🔥Muốn phế, ắt trước dựng. Muốn lấy, ắt trước cho.🔥🔥</item>
+        <item>🔥Cá không thể rời vực, khí sắc nước không cho người thấy.🔥🔥</item>
+        <item>🔥Đức cao không cho là đức nên có đức. Đức thấp không mất đức nên không đức.🔥🔥</item>
+        <item>🔥Mất Đạo mới có đức, mất đức mới có nhân. Mất nhân mới có nghĩa, mất nghĩa mới có lễ.🔥🔥</item>
+        <item>🔥Lễ là chỗ mỏng của trung tín, là đầu của loạn.🔥🔥</item>
+        <item>🔥Đại trượng phu ở chỗ dày, không ở chỗ mỏng.🔥🔥</item>
+        <item>🔥Ở chỗ thật, không ở chỗ hoa.🔥🔥</item>
+        <item>🔥Trở lại là động của Đạo, mềm yếu là dụng của Đạo.🔥🔥</item>
+        <item>🔥Muôn vật trong thiên hạ sinh từ có, có sinh từ không.🔥🔥</item>
+        <item>🔥Bậc thượng nghe Đạo, siêng làm.🔥🔥</item>
+        <item>🔥Bậc trung nghe Đạo, nửa còn nửa mất.🔥🔥</item>
+        <item>🔥Bậc hạ nghe Đạo, cười lớn.🔥🔥</item>
+        <item>🔥Đạo sáng như tối, tiến Đạo như lùi, Đạo bằng như gồ ghề.🔥🔥</item>
+        <item>🔥Đức cao như hang, trắng lớn như nhục, đức rộng như thiếu.🔥🔥</item>
+        <item>🔥Vuông lớn không góc, đồ lớn thành muộn, âm lớn ít tiếng.🔥🔥</item>
+        <item>🔥Tượng lớn không hình, Đạo ẩn không tên.🔥🔥</item>
+        <item>🔥Chỉ Đạo khéo ban cho và làm thành.🔥🔥</item>
+        <item>🔥Đạo sinh một, một sinh hai, hai sinh ba, ba sinh muôn vật.🔥🔥</item>
+        <item>🔥Muôn vật mang âm ôm dương, khí hòa làm nên hòa.🔥🔥</item>
+        <item>🔥Thiên hạ có Đạo, ngựa chiến được đưa về cày ruộng.🔥🔥</item>
+        <item>🔥Thiên hạ vô Đạo, ngựa chiến sinh ở ngoại ô.🔥🔥</item>
+        <item>🔥Tội lớn nhất là ham muốn, họa lớn nhất là không biết đủ.🔥🔥</item>
+        <item>🔥Lỗi lớn nhất là ham được; biết đủ thì luôn đủ.🔥🔥</item>
+        <item>🔥Không ra cửa mà biết thiên hạ; không nhìn cửa sổ mà thấy đạo trời.🔥🔥</item>
+        <item>🔥Càng đi xa, càng biết ít.🔥🔥</item>
+        <item>🔥Thánh nhân không đi mà biết, không thấy mà sáng, không làm mà thành.🔥🔥</item>
+        <item>🔥Học thì mỗi ngày thêm, theo Đạo thì mỗi ngày bớt.🔥🔥</item>
+        <item>🔥Bớt rồi lại bớt, đến chỗ vô vi.🔥🔥</item>
+        <item>🔥Lấy thiên hạ thường nhờ không việc; đến khi có việc, không đủ lấy thiên hạ.🔥🔥</item>
+        <item>🔥Thánh nhân không có lòng cố định, lấy lòng dân làm lòng mình.🔥🔥</item>
+        <item>🔥Người thiện ta thiện với họ, người không thiện ta cũng thiện với họ.🔥🔥</item>
+        <item>🔥Người tín ta tin họ, người không tín ta cũng tin họ.🔥🔥</item>
+        <item>🔥Thánh nhân ở thiên hạ, thu mình, làm lòng thiên hạ hòa lẫn.🔥🔥</item>
+        <item>🔥Trăm họ đều chú tai mắt, thánh nhân coi họ như trẻ con.🔥🔥</item>
+        <item>🔥Ra sinh vào tử, kẻ sống có mười phần ba.🔥🔥</item>
+        <item>🔥Đạo sinh ra, đức nuôi dưỡng, vật tạo hình, thế làm thành.🔥🔥</item>
+        <item>🔥Muôn vật không gì không tôn Đạo và quý đức.🔥🔥</item>
+        <item>🔥Đạo sinh mà không chiếm, làm mà không cậy, nuôi mà không cai.🔥🔥</item>
+        <item>🔥Thiên hạ có đầu, lấy làm mẹ thiên hạ.🔥🔥</item>
+        <item>🔥Đã được mẹ, để biết con; đã biết con, lại giữ mẹ.🔥🔥</item>
+        <item>🔥Bịt lỗ miệng, đóng cửa, cả đời không khó nhọc.🔥🔥</item>
+        <item>🔥Mở lỗ miệng, lo việc, cả đời không cứu được.🔥🔥</item>
+        <item>🔥Thấy nhỏ gọi là sáng, giữ mềm gọi là mạnh.🔥🔥</item>
+        <item>🔥Dùng ánh sáng, trở về chỗ sáng, không để tai ương cho mình.🔥🔥</item>
+        <item>🔥Khiến ta có chút hiểu biết, đi trên Đạo lớn, chỉ sợ đi lệch.🔥🔥</item>
+        <item>🔥Đạo lớn rất bằng phẳng, mà người thích đường tắt.🔥🔥</item>
+        <item>🔥Người dựng khéo không bị giật, người ôm khéo không bị tuột.🔥🔥</item>
+        <item>🔥Tu ở thân, đức mới thật. Tu ở nhà, đức mới dư.🔥🔥</item>
+        <item>🔥Tu ở làng, đức mới dài. Tu ở nước, đức mới thịnh.🔥🔥</item>
+        <item>🔥Tu ở thiên hạ, đức mới phổ khắp.🔥🔥</item>
+        <item>🔥Biết người là trí, biết mình là sáng. Thắng người là có sức, thắng mình là mạnh.🔥🔥</item>
+        <item>🔥Biết đủ là giàu, cố gắng là có chí.🔥🔥</item>
+        <item>🔥Không mất chỗ mình thì lâu, chết mà không mất là thọ.🔥🔥</item>
+        <item>🔥Đạo lớn tràn khắp, có thể sang trái phải.🔥🔥</item>
+        <item>🔥Muôn vật nhờ Đạo mà sống mà không từ, công thành mà không chiếm.🔥🔥</item>
+        <item>🔥Che chở nuôi muôn vật mà không làm chủ, có thể gọi là nhỏ.🔥🔥</item>
+        <item>🔥Muôn vật quy về mà không làm chủ, có thể gọi là lớn.🔥🔥</item>
+        <item>🔥Nắm hình tượng lớn, thiên hạ hướng về. Về mà không hại, yên bình thái.🔥🔥</item>
+        <item>🔥Nhạc và bã mồi, khách qua dừng. Đạo nói ra, nhạt vô vị.🔥🔥</item>
+        <item>🔥Nhìn không đủ thấy, nghe không đủ nghe, dùng không hết.🔥🔥</item>
         <item>🔥🔥🔥</item>
-        <item>🔥将欲取天下而为之，吾见其不得已。🔥🔥</item>
-        <item>🔥天下之物，不可有为，不可强执。🔥🔥</item>
-        <item>🔥物或行或随，或嘘或吹，或强或羸。🔥🔥</item>
-        <item>🔥圣人去甚，去奢，去泰。🔥🔥</item>
-        <item>🔥以正治国，以奇用兵，以无事取天下。🔥🔥</item>
-        <item>🔥我无为，而民自化；我好静，民自正。🔥🔥</item>
-        <item>🔥我无事，民自富；我无欲，民自朴。🔥🔥</item>
-        <item>🔥祸兮福之所倚，福兮祸之所伏。🔥🔥</item>
-        <item>🔥孰知其极？其无正，正复为奇。🔥🔥</item>
-        <item>🔥善复为妖，人之迷，其日固久。🔥🔥</item>
-        <item>🔥方而不割，廉而不刿，直而不肆。🔥🔥</item>
-        <item>🔥治人事天，莫若啬。🔥🔥</item>
-        <item>🔥夫唯啬，是谓早服；早服谓之重积德。🔥🔥</item>
-        <item>🔥重积德，则无不克；无不克，则莫知其极。🔥🔥</item>
-        <item>🔥有国之母，可以长久，是谓深根固柢。🔥🔥</item>
-        <item>🔥治大国，若烹小鲜。🔥🔥</item>
-        <item>🔥以道莅天下，其鬼不神；非其鬼不神。🔥🔥</item>
-        <item>🔥圣人亦不伤人，两不相伤，德交归焉。🔥🔥</item>
-        <item>🔥大国者下流，天下之牝，天下之交。🔥🔥</item>
-        <item>🔥牝常以静胜牡，以静为下。🔥🔥</item>
-        <item>🔥大国以下小国，则取小国。🔥🔥</item>
-        <item>🔥小国以下大国，则取大国。🔥🔥</item>
-        <item>🔥道者万物之奥，善人之宝，不善人之所保。🔥🔥</item>
-        <item>🔥美言可以市尊，美行可以加人。🔥🔥</item>
-        <item>🔥人之不善，何弃之有？🔥🔥</item>
-        <item>🔥立天子，置三公，虽有拱璧以先驷马。🔥🔥</item>
-        <item>🔥求道者，罪以免，功以成。🔥🔥</item>
-        <item>🔥天下难事，必作于易；天下大事，必作于细。🔥🔥</item>
-        <item>🔥轻诺必寡信，多易必多难。🔥🔥</item>
-        <item>🔥圣人犹难之，故终无难矣。🔥🔥</item>
-        <item>🔥合抱之木，生于毫末；九层之台，起于累土。🔥🔥</item>
-        <item>🔥千里之行，始于足下。🔥🔥</item>
-        <item>🔥民之从事，常于几成而败之。🔥🔥</item>
-        <item>🔥慎终如始，则无败事。🔥🔥</item>
-        <item>🔥欲将取天下，必以道辅，不可强为。🔥🔥</item>
-        <item>🔥天下多忌讳，而民弥贫。🔥🔥</item>
-        <item>🔥民多利器，国家滋昏。🔥🔥</item>
-        <item>🔥人多技巧，奇物滋起；法令滋彰，盗贼多有。🔥🔥</item>
-        <item>🔥圣人欲不欲，不贵难得之货。🔥🔥</item>
-        <item>🔥学不学，复众人之所过。🔥🔥</item>
-        <item>🔥辅万物之自然，而不敢为。🔥🔥</item>
-        <item>🔥古之善为道者，非以明民，将以愚之。🔥🔥</item>
-        <item>🔥民之难治，以其智多。🔥🔥</item>
-        <item>🔥以智治国，国之贼；不以智治国，国之福。🔥🔥</item>
-        <item>🔥知此两者，亦稽式；常知稽式，是谓玄德。🔥🔥</item>
-        <item>🔥玄德深矣远矣，与物反矣，然后乃至大顺。🔥🔥</item>
-        <item>🔥江海所以能为百谷王者，以其善下之。🔥🔥</item>
-        <item>🔥是以圣人欲上民，必以言下之。🔥🔥</item>
-        <item>🔥欲先民，必以身后之。🔥🔥</item>
-        <item>🔥圣人处上而民不重，处前而民不害。🔥🔥</item>
-        <item>🔥天下乐推而不厌，以其不争，故天下莫与之争。🔥🔥</item>
-        <item>🔥天下莫柔弱于水，而攻坚强者莫之能胜。🔥🔥</item>
-        <item>🔥弱之胜强，柔之胜刚，天下莫不知，莫能行。🔥🔥</item>
-        <item>🔥和大怨，必有余怨，安可以为善？🔥🔥</item>
-        <item>🔥执左契，而不责于人。有德司契，无德司彻。🔥🔥</item>
-        <item>🔥小国寡民，使民重死而不远徙。🔥🔥</item>
-        <item>🔥甘其食，美其服，安其居，乐其俗。🔥🔥</item>
-        <item>🔥邻国相望，鸡犬相闻，民至老死不相往来。🔥🔥</item>
-        <item>🔥信言不美，美言不信。🔥🔥</item>
-        <item>🔥善者不辩，辩者不善。🔥🔥</item>
-        <item>🔥知者不博，博者不知。🔥🔥</item>
-        <item>🔥圣人不积，既以为人，己愈有。🔥🔥</item>
-        <item>🔥既以与人，己愈多。🔥🔥</item>
-        <item>🔥天之道，利而不害；圣人之道，为而不争。🔥🔥</item>
-        <item>🔥勇于敢则杀，勇于不敢则活。🔥🔥</item>
-        <item>🔥天之道，不争而善胜，不言而善应。🔥🔥</item>
-        <item>🔥不召而自来，繟然而善谋。🔥🔥</item>
-        <item>🔥民不畏死，奈何以死惧之？🔥🔥</item>
-        <item>🔥若使民常畏死，而为奇者，吾得执而杀之。🔥🔥</item>
-        <item>🔥常有司杀者杀，代司杀者杀，是代大匠斫。🔥🔥</item>
-        <item>🔥民之饥，以其上食税之多，是以饥。🔥🔥</item>
-        <item>🔥民之难治，以其上之有为，是以难治。🔥🔥</item>
-        <item>🔥民之轻死，以其上求生之厚，是以轻死。🔥🔥</item>
-        <item>🔥夫唯无以生为者，是贤于贵生。🔥🔥</item>
-        <item>🔥人之生也柔弱，其死也坚强。🔥🔥</item>
-        <item>🔥草木之生也柔脆，其死也枯槁。🔥🔥</item>
-        <item>🔥坚强者死之徒，柔弱者生之徒。🔥🔥</item>
-        <item>🔥天之道，其犹张弓乎？高者抑之，下者举之。🔥🔥</item>
-        <item>🔥有余者损之，不足者补之。🔥🔥</item>
-        <item>🔥人之道，损不足以奉有余。🔥🔥</item>
-        <item>🔥孰能有余以奉天下，唯有道者。🔥🔥</item>
-        <item>🔥圣人功成而不处，不欲见贤。🔥🔥</item>
-        <item>🔥天下莫知善为柔，柔能克刚，水能穿石。🔥🔥</item>
-        <item>🔥知足不辱，知止不殆，可以长久。🔥🔥</item>
-        <item>🔥大成若缺，其用不弊；大盈若冲，其用不穷。🔥🔥</item>
-        <item>🔥大直若屈，大巧若拙，大辩若讷。🔥🔥</item>
-        <item>🔥躁胜寒，静胜热，清静为天下正。🔥🔥</item>
-        <item>🔥天下有道，圣人藏智，百姓淳朴。🔥🔥</item>
-        <item>🔥道无形无声，化育万物，不见其功。🔥🔥</item>
-        <item>🔥君子行大道，不以浮华显自身。🔥🔥</item>
-        <item>🔥心若虚空，方能容纳世间万物。🔥🔥</item>
-        <item>🔥少私寡欲，心静则明，无欲则刚。🔥🔥</item>
-        <item>🔥行事不张扬，藏锋守拙，方能长久。🔥🔥</item>
-        <item>🔥待人谦和处下，万事少有纷争。🔥🔥</item>
-        <item>🔥顺物自然，不加干预，万物自安。🔥🔥</item>
-        <item>🔥心无执念，得失不惊，宠辱皆忘。🔥🔥</item>
-        <item>🔥实用小工具：https://www.zbtool.store/🔥🔥</item>
-        <item>🔥天天象棋涨棋QQ群：635808985🔥🔥</item>
-        <item>🔥棋谱导出（公益服务）QQ群：1003608168🔥🔥</item>
-        <item>🔥极简象棋QQ群：94846686🔥🔥</item>
-        <item>🔥清弈小间QQ群：1027546478🔥🔥</item>
-        <item>🔥象棋训练智能化研究会QQ群：834477326🔥🔥</item>
-        <item>🔥高素质斗炮新传奇QQ群：711977280🔥🔥</item>
-        <item>🔥极简象棋全国普及QQ群：779590771🔥🔥</item>
-        <item>🐟🐠🐡皮卡鱼为您加油!🦈🎏🐬🐳🐋</item>
-        <item>🔥🔥刘霸天为您加油！🔥🔥🔥</item>
-        <item>☁️☁️云库为您加油!☁️☁️☁️</item>
-
-
-
+        <item>🔥Toan lấy thiên hạ mà làm, ta thấy không thể được.🔥🔥</item>
+        <item>🔥Vật trong thiên hạ, không thể làm, không thể cưỡng nắm.🔥🔥</item>
+        <item>🔥Vật có khi đi trước, khi theo sau, khi thổi nhẹ, khi thổi mạnh, khi mạnh, khi yếu.🔥🔥</item>
+        <item>🔥Thánh nhân bỏ cực đoan, bỏ xa hoa, bỏ quá độ.🔥🔥</item>
+        <item>🔥Dùng chính trị nước, dùng lạ dùng binh, dùng không việc lấy thiên hạ.🔥🔥</item>
+        <item>🔥Ta vô vi mà dân tự hóa; ta thích tĩnh mà dân tự chính.🔥🔥</item>
+        <item>🔥Ta không việc, dân tự giàu; ta không ham, dân tự chất phác.🔥🔥</item>
+        <item>🔥Họa là chỗ tựa của phúc, phúc là chỗ ẩn của họa.🔥🔥</item>
+        <item>🔥Ai biết chỗ cùng? Không có chính, chính lại thành lạ.🔥🔥</item>
+        <item>🔥Thiện lại thành yêu, người mê đã lâu ngày.🔥🔥</item>
+        <item>🔥Vuông mà không cắt, sắc mà không đâm, thẳng mà không buông.🔥🔥</item>
+        <item>🔥Trị người thờ trời, không gì bằng tiết kiệm.🔥🔥</item>
+        <item>🔥Chỉ vì tiết kiệm nên sớm phục; sớm phục là tích đức dày.🔥🔥</item>
+        <item>🔥Tích đức dày thì không gì không thắng; không gì không thắng thì không ai biết chỗ cùng.🔥🔥</item>
+        <item>🔥Có mẹ của nước thì lâu dài, gọi là rễ sâu gốc vững.🔥🔥</item>
+        <item>🔥Trị nước lớn như nấu cá nhỏ.🔥🔥</item>
+        <item>🔥Dùng Đạo trị thiên hạ, quỷ không thiêng; chẳng phải quỷ không thiêng.🔥🔥</item>
+        <item>🔥Thánh nhân cũng không hại người, hai bên không hại nhau, đức giao về.🔥🔥</item>
+        <item>🔥Nước lớn là dòng dưới, là cái mẹ thiên hạ, là chỗ giao của thiên hạ.🔥🔥</item>
+        <item>🔥Cái mẹ thường lấy tĩnh thắng cái đực, lấy tĩnh làm dưới.🔥🔥</item>
+        <item>🔥Nước lớn hạ mình với nước nhỏ thì lấy được nước nhỏ.🔥🔥</item>
+        <item>🔥Nước nhỏ hạ mình với nước lớn thì lấy được nước lớn.🔥🔥</item>
+        <item>🔥Đạo là chỗ sâu kín của muôn vật, là báu của người thiện, là chỗ che của người không thiện.🔥🔥</item>
+        <item>🔥Lời đẹp có thể mua sự tôn kính, việc đẹp có thể thêm người.🔥🔥</item>
+        <item>🔥Người không thiện, sao lại bỏ?🔥🔥</item>
+        <item>🔥Lập thiên tử, đặt tam công, dù có ngọc bích và xe tứ mã.🔥🔥</item>
+        <item>🔥Người cầu Đạo, tội được tha, công được thành.🔥🔥</item>
+        <item>🔥Việc khó thiên hạ ắt làm từ dễ; việc lớn thiên hạ ắt làm từ nhỏ.🔥🔥</item>
+        <item>🔥Hứa nhẹ ắt ít tin, coi dễ nhiều ắt nhiều khó.🔥🔥</item>
+        <item>🔥Thánh nhân còn coi là khó, nên cuối cùng không khó.🔥🔥</item>
+        <item>🔥Cây ôm vòng sinh từ mầm nhỏ; đài chín tầng khởi từ đất đắp.🔥🔥</item>
+        <item>🔥Hành trình ngàn dặm bắt đầu từ bước chân.🔥🔥</item>
+        <item>🔥Dân làm việc, thường gần thành mà hỏng.🔥🔥</item>
+        <item>🔥Cẩn thận cuối như đầu thì không có việc hỏng.🔥🔥</item>
+        <item>🔥Muốn lấy thiên hạ, ắt lấy Đạo phò, không thể cưỡng làm.🔥🔥</item>
+        <item>🔥Thiên hạ nhiều kiêng kỵ, dân càng nghèo.🔥🔥</item>
+        <item>🔥Dân nhiều khí sắc, nước càng tối.🔥🔥</item>
+        <item>🔥Người nhiều kỹ xảo, vật lạ càng sinh; pháp lệnh càng rõ, trộm cướp càng nhiều.🔥🔥</item>
+        <item>🔥Thánh nhân muốn cái không muốn, không quý của khó được.🔥🔥</item>
+        <item>🔥Học cái không học, trở về chỗ người qua.🔥🔥</item>
+        <item>🔥Phò tự nhiên của muôn vật mà không dám làm.🔥🔥</item>
+        <item>🔥Người xưa khéo theo Đạo, không làm dân sáng mà làm dân chất phác.🔥🔥</item>
+        <item>🔥Dân khó trị vì trí khôn nhiều.🔥🔥</item>
+        <item>🔥Dùng trí trị nước là giặc của nước; không dùng trí trị nước là phúc của nước.🔥🔥</item>
+        <item>🔥Biết cả hai điều ấy là mẫu mực; thường biết mẫu mực gọi là đức huyền.🔥🔥</item>
+        <item>🔥Đức huyền sâu xa, trái với vật, rồi mới đến đại thuận.🔥🔥</item>
+        <item>🔥Sông biển làm vua trăm khe vì khéo ở dưới.🔥🔥</item>
+        <item>🔥Nên thánh nhân muốn ở trên dân, ắt lấy lời hạ mình.🔥🔥</item>
+        <item>🔥Muốn trước dân, ắt đặt thân sau.🔥🔥</item>
+        <item>🔥Thánh nhân ở trên mà dân không nặng, ở trước mà dân không hại.🔥🔥</item>
+        <item>🔥Thiên hạ vui đẩy mà không chán, vì không tranh nên thiên hạ không ai tranh.🔥🔥</item>
+        <item>🔥Thiên hạ không gì mềm yếu hơn nước, mà đánh cái cứng mạnh không gì thắng được.🔥🔥</item>
+        <item>🔥Yếu thắng mạnh, mềm thắng cứng, thiên hạ không ai không biết, không ai làm được.🔥🔥</item>
+        <item>🔥Hòa mối oán lớn ắt còn oán dư, sao có thể là thiện?🔥🔥</item>
+        <item>🔥Giữ vế trái khế mà không trách người. Có đức giữ khế, không đức giữ thuế.🔥🔥</item>
+        <item>🔥Nước nhỏ dân ít, khiến dân coi chết là nặng mà không đi xa.🔥🔥</item>
+        <item>🔥Cho ăn ngon, mặc đẹp, ở yên, vui tục.🔥🔥</item>
+        <item>🔥Nước láng giềng nhìn nhau, gà chó nghe nhau, dân đến chết già không qua lại.🔥🔥</item>
+        <item>🔥Lời thật không đẹp, lời đẹp không thật.🔥🔥</item>
+        <item>🔥Người thiện không tranh biện, người tranh biện không thiện.🔥🔥</item>
+        <item>🔥Người biết không rộng, người rộng không biết.🔥🔥</item>
+        <item>🔥Thánh nhân không tích, càng vì người mình càng có.🔥🔥</item>
+        <item>🔥Càng cho người, mình càng nhiều.🔥🔥</item>
+        <item>🔥Đạo trời lợi mà không hại; đạo thánh làm mà không tranh.🔥🔥</item>
+        <item>🔥Dũng mà dám thì chết, dũng mà không dám thì sống.🔥🔥</item>
+        <item>🔥Đạo trời không tranh mà khéo thắng, không nói mà khéo đáp.🔥🔥</item>
+        <item>🔥Không gọi mà tự đến, thong thả mà khéo mưu.🔥🔥</item>
+        <item>🔥Dân không sợ chết, sao lại dùng chết để dọa?🔥🔥</item>
+        <item>🔥Nếu khiến dân thường sợ chết, kẻ làm điều lạ, ta bắt mà giết.🔥🔥</item>
+        <item>🔥Thường có kẻ coi việc giết giết; thay kẻ coi việc giết mà giết là thay thợ cả chặt.🔥🔥</item>
+        <item>🔥Dân đói vì bề trên ăn thuế nhiều nên đói.🔥🔥</item>
+        <item>🔥Dân khó trị vì bề trên làm nhiều nên khó trị.🔥🔥</item>
+        <item>🔥Dân coi nhẹ chết vì bề trên cầu sống dày nên coi nhẹ chết.🔥🔥</item>
+        <item>🔥Chỉ kẻ không vì sống mới hơn kẻ quý sống.🔥🔥</item>
+        <item>🔥Người khi sống thì mềm yếu, khi chết thì cứng mạnh.🔥🔥</item>
+        <item>🔥Cỏ cây khi sống thì mềm giòn, khi chết thì khô héo.🔥🔥</item>
+        <item>🔥Cứng mạnh là bạn của chết, mềm yếu là bạn của sống.🔥🔥</item>
+        <item>🔥Đạo trời như giương cung? Cao thì hạ xuống, thấp thì nâng lên.🔥🔥</item>
+        <item>🔥Kẻ dư thì bớt, kẻ thiếu thì bù.🔥🔥</item>
+        <item>🔥Đạo người, bớt kẻ thiếu để dâng kẻ dư.🔥🔥</item>
+        <item>🔥Ai có dư để dâng thiên hạ, chỉ người có Đạo.🔥🔥</item>
+        <item>🔥Thánh nhân công thành mà không ở, không muốn tỏ mình hiền.🔥🔥</item>
+        <item>🔥Thiên hạ không ai biết khéo làm mềm, mềm thắng cứng, nước xuyên đá.🔥🔥</item>
+        <item>🔥Biết đủ không nhục, biết dừng không nguy, có thể lâu dài.🔥🔥</item>
+        <item>🔥Thành lớn như thiếu, dùng không hư; đầy lớn như trống, dùng không cùng.🔥🔥</item>
+        <item>🔥Thẳng lớn như cong, khéo lớn như vụng, biện lớn như chậm.🔥🔥</item>
+        <item>🔥Nóng thắng lạnh, tĩnh thắng nóng, thanh tĩnh là chính thiên hạ.🔥🔥</item>
+        <item>🔥Thiên hạ có Đạo, thánh nhân ẩn trí, trăm họ chất phác.🔥🔥</item>
+        <item>🔥Đạo không hình không tiếng, hóa nuôi muôn vật, không thấy công.🔥🔥</item>
+        <item>🔥Quân tử đi Đạo lớn, không lấy phù hoa khoe mình.🔥🔥</item>
+        <item>🔥Lòng như hư không mới chứa được muôn vật.🔥🔥</item>
+        <item>🔥Ít riêng ít muốn, lòng tĩnh thì sáng, không muốn thì mạnh.🔥🔥</item>
+        <item>🔥Làm việc không phô trương, giấu sắc giữ vụng mới lâu dài.🔥🔥</item>
+        <item>🔥Đối người khiêm hòa ở dưới, muôn việc ít tranh.🔥🔥</item>
+        <item>🔥Thuận tự nhiên của vật, không can thiệp, muôn vật tự yên.🔥🔥</item>
+        <item>🔥Lòng không cố chấp, được mất không bàng hoàng, vinh nhục đều quên.🔥🔥</item>
+        <item>🔥Công cụ nhỏ hữu ích: https://www.zbtool.store/🔥🔥</item>
+        <item>🔥Nhóm QQ Tiến cờ Thiên Thiên Tượng Kỳ: 635808985🔥🔥</item>
+        <item>🔥Nhóm QQ xuất kỳ phổ (dịch vụ công ích): 1003608168🔥🔥</item>
+        <item>🔥Nhóm QQ Cờ Tướng Tối Giản: 94846686🔥🔥</item>
+        <item>🔥Nhóm QQ Thanh Dịch Tiểu Gian: 1027546478🔥🔥</item>
+        <item>🔥Nhóm QQ Nghiên cứu Trí tuệ hóa Luyện tập Cờ tướng: 834477326🔥🔥</item>
+        <item>🔥Nhóm QQ Truyền thuyết mới Đấu Pháo chất lượng cao: 711977280🔥🔥</item>
+        <item>🔥Nhóm QQ Phổ cập Cờ Tướng Tối Giản toàn quốc: 779590771🔥🔥</item>
+        <item>🐟🐠🐡Pikafish cổ vũ bạn!🦈🎏🐬🐳🐋</item>
+        <item>🔥🔥Lưu Bá Thiên cổ vũ bạn!🔥🔥🔥</item>
+        <item>☁️☁️Kho mây cổ vũ bạn!☁️☁️☁️</item>
     </string-array>
 </resources>

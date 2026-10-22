@@ -278,7 +278,7 @@ public class TikuManager {
      */
     public String getCurrentTikuName() {
         if (currentTiku == null) {
-            return "鏈€夋嫨棰樺簱";
+            return I18n.tr("未选择题库");
         }
         return currentTiku.getName();
     }

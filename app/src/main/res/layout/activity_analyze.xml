@@ -12,7 +12,7 @@
         android:id="@+id/tv_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="老夫只是略知一二"
+        android:text="@string/analyze_title"
         android:maxLines="2"
         android:textSize="32sp"
         android:textColor="#000000"
@@ -32,8 +32,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/shiju"
-        android:text="刘霸天为您加油！"
+        android:text="@string/cheer_short"
         android:maxLines="1"
+        android:ellipsize="end"
         android:textSize="16sp"
         android:textColor="#000000"
         android:gravity="center"
@@ -87,8 +88,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginStart="36dp"
-            android:layout_marginEnd="24dp">
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp">
 
             <ImageView
                 android:id="@+id/ivTurnIndicator"
@@ -109,15 +110,18 @@
 
             <Button
                 android:id="@+id/btnBack"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="返回"
+                android:text="@string/btn_back"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textAllCaps="false"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeMaxTextSize="@dimen/action_button_text_size"
+                app:autoSizeStepGranularity="1sp"
                 android:maxLines="1"
-                android:singleLine="true"
-                android:ellipsize="none"
-                android:paddingHorizontal="4dp"
+                android:ellipsize="end"
+                android:paddingHorizontal="2dp"
                 android:background="@drawable/button_rounded"/>
         </LinearLayout>
 
@@ -132,15 +136,18 @@
 
             <Button
                 android:id="@+id/btnUndo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="悔棋"
+                android:text="@string/btn_regret"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textAllCaps="false"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeMaxTextSize="@dimen/action_button_text_size"
+                app:autoSizeStepGranularity="1sp"
                 android:maxLines="1"
-                android:singleLine="true"
-                android:ellipsize="none"
-                android:paddingHorizontal="4dp"
+                android:ellipsize="end"
+                android:paddingHorizontal="2dp"
                 android:background="@drawable/button_rounded"/>
         </LinearLayout>
 
@@ -155,15 +162,18 @@
 
             <Button
                 android:id="@+id/btnReset"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="重来"
+                android:text="@string/btn_reset"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textAllCaps="false"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeMaxTextSize="@dimen/action_button_text_size"
+                app:autoSizeStepGranularity="1sp"
                 android:maxLines="1"
-                android:singleLine="true"
-                android:ellipsize="none"
-                android:paddingHorizontal="4dp"
+                android:ellipsize="end"
+                android:paddingHorizontal="2dp"
                 android:background="@drawable/button_rounded"/>
         </LinearLayout>
 
@@ -175,19 +185,22 @@
             android:orientation="vertical"
             android:gravity="center_horizontal"
             android:layout_marginStart="2dp"
-            android:layout_marginEnd="30dp">
+            android:layout_marginEnd="8dp">
 
             <Button
                 android:id="@+id/btnAnalyze"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="分析"
+                android:text="@string/btn_analyze_action"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textAllCaps="false"
+                app:autoSizeTextType="uniform"
+                app:autoSizeMinTextSize="8sp"
+                app:autoSizeMaxTextSize="@dimen/action_button_text_size"
+                app:autoSizeStepGranularity="1sp"
                 android:maxLines="1"
-                android:singleLine="true"
-                android:ellipsize="none"
-                android:paddingHorizontal="4dp"
+                android:ellipsize="end"
+                android:paddingHorizontal="2dp"
                 android:background="@drawable/button_rounded"/>
         </LinearLayout>
 
@@ -215,7 +228,7 @@
                 android:id="@+id/tvCloudDb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="云库"
+                android:text="@string/cloud_db"
                 android:textSize="12sp"
                 android:textColor="#333333"
                 android:fontFamily="sans-serif"/>
@@ -234,7 +247,7 @@
                 android:id="@+id/tvAnalyzeResult"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="🐟🐠🐡皮卡鱼🦈🎏🐬🐳🐋"
+                android:text="@string/pikafish_title"
                 android:textSize="12sp"
                 android:textColor="#333333"
                 android:fontFamily="sans-serif"/>
@@ -252,7 +265,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:text="初始局面"
             android:id="@+id/moveListContent" />
 
         </ScrollView>

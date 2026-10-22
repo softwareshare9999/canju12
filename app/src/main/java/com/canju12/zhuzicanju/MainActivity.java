@@ -124,8 +124,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         checkAndRequestPermissions();
-        // 检查并请求存储权限
-        checkAndRequestPermissions();
 
         // ===== 首次运行显示说明书 =====
         if (isFirstRun()) {
@@ -181,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 currentQuestionIndex = 0;
                 loadCurrentQuestion();
             } else {
-                Toast.makeText(this, "未找到题库文件，请检查assets目录", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, I18n.tr("未找到题库文件，请检查assets目录"), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -222,7 +220,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity", "传入序号: " + index);
 
         if (index <= 0) {
-            Toast.makeText(this, "加载错题失败: 序号无效", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("加载错题失败: 序号无效"), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -245,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (wrongBookTiku == null) {
-            Toast.makeText(this, "错题本不存在", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("错题本不存在"), Toast.LENGTH_SHORT).show();
             Log.e("MainActivity", "错题本不存在！");
             return;
         }
@@ -258,7 +256,7 @@ public class MainActivity extends AppCompatActivity {
         // 检查序号是否有效
         int position = index - 1;
         if (position < 0 || position >= wrongList.size()) {
-            Toast.makeText(this, "错题序号无效，共 " + wrongList.size() + " 题", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("错题序号无效，共 %d 题", wrongList.size()), Toast.LENGTH_SHORT).show();
             Log.e("MainActivity", "序号无效: position=" + position + ", size=" + wrongList.size());
             return;
         }
@@ -266,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
         // 获取对应序号的FEN
         String fen = wrongList.get(position);
         if (fen == null || fen.isEmpty()) {
-            Toast.makeText(this, "加载错题失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("加载错题失败"), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -297,7 +295,7 @@ public class MainActivity extends AppCompatActivity {
         saveCurrentQuestionToPreferences();
         // ========================
 
-        Toast.makeText(this, "已加载错题本第 " + index + " 题", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, I18n.tr("已加载错题本第 %d 题", index), Toast.LENGTH_LONG).show();
     }
 
     // ========== 权限相关方法 ==========
@@ -343,8 +341,9 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "存储权限已授予", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, I18n.tr("存储权限已授予"), Toast.LENGTH_SHORT).show();
                 createNecessaryFolders();
+                refreshExternalUiAssets();
                 if (tikuManager != null) {
                     tikuManager.reloadTiku();
                 }
@@ -367,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             } else {
-                Toast.makeText(this, "需要存储权限才能管理题库文件", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, I18n.tr("需要存储权限才能管理题库文件"), Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -378,8 +377,9 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == REQUEST_PERMISSION_CODE) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 if (Environment.isExternalStorageManager()) {
-                    Toast.makeText(this, "存储权限已授予", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, I18n.tr("存储权限已授予"), Toast.LENGTH_SHORT).show();
                     createNecessaryFolders();
+                    refreshExternalUiAssets();
                     if (tikuManager != null) {
                         tikuManager.reloadTiku();
                     }
@@ -402,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    Toast.makeText(this, "需要存储权限才能管理题库文件", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, I18n.tr("需要存储权限才能管理题库文件"), Toast.LENGTH_LONG).show();
                 }
             }
         }
@@ -460,7 +460,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     if (wrongBookFile.createNewFile()) {
                         Log.d("MainActivity", "错题本.txt文件创建成功: " + wrongBookFile.getAbsolutePath());
-                        Toast.makeText(this, "错题本.txt文件已创建", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, I18n.tr("错题本.txt文件已创建"), Toast.LENGTH_SHORT).show();
 
                         // 写入初始内容
                         java.io.FileWriter writer = new java.io.FileWriter(wrongBookFile);
@@ -489,7 +489,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             Log.e("MainActivity", "创建文件夹失败: " + e.getMessage());
-            Toast.makeText(this, "创建文件夹失败: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("创建文件夹失败: %s", e.getMessage()), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -504,7 +504,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         if (poetryList.isEmpty()) {
-            tvShiju.setText("诗词库为空，请检查 strings.xml");
+            tvShiju.setText(I18n.tr("诗词库为空，请检查 strings.xml"));
         }
     }
 
@@ -526,11 +526,11 @@ public class MainActivity extends AppCompatActivity {
     private void showRandomPoetry() {
         if (poetryList == null || poetryList.isEmpty()) return;
         List<String> normalList = new ArrayList<>(poetryList);
-        if (normalList.contains("🔥🔥刘霸天为您加油🔥🔥")) {
-            normalList.remove("🔥🔥刘霸天为您加油🔥🔥🔥");
+        if (normalList.contains(I18n.tr("🔥🔥刘霸天为您加油🔥🔥"))) {
+            normalList.remove(I18n.tr("🔥🔥刘霸天为您加油🔥🔥🔥"));
         }
         if (normalList.isEmpty()) {
-            tvShiju.setText("暂无可用诗句");
+            tvShiju.setText(I18n.tr("暂无可用诗句"));
             return;
         }
         Random random = new Random();
@@ -540,7 +540,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displaySpecialMessage() {
-        String text = "🔥🔥刘霸天为您加油！🔥🔥🔥";
+        String text = I18n.tr("🔥🔥刘霸天为您加油！🔥🔥🔥");
         animateText(tvShiju, text);
     }
 
@@ -599,6 +599,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    /**
+     * 权限授予后重新加载外置素材（背景、棋盘、棋子）。
+     * 启动时若尚未获得存储权限，ChessView 只能使用内置素材；授权后无需重启即可切换。
+     */
+    private void refreshExternalUiAssets() {
+        if (chessView == null) return;
+        chessView.loadChessImages();
+        chessView.invalidate();
+        setupBackgrounds();
+    }
+
     /**
      * 设置棋盘和房间背景
      */
@@ -662,16 +673,16 @@ public class MainActivity extends AppCompatActivity {
         // 长按重来 → 载入上一题；若是第一题则提示
         btnRepeat.setOnLongClickListener(v -> {
             if (currentTiku == null) {
-                Toast.makeText(this, "未选择题库", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, I18n.tr("未选择题库"), Toast.LENGTH_SHORT).show();
                 return true;
             }
             currentFenList = currentTiku.getFenList();
             if (currentFenList == null || currentFenList.isEmpty()) {
-                Toast.makeText(this, "题库为空", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, I18n.tr("题库为空"), Toast.LENGTH_SHORT).show();
                 return true;
             }
             if (currentQuestionIndex <= 0) {
-                Toast.makeText(this, "已是题库中第一题！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, I18n.tr("已是题库中第一题！"), Toast.LENGTH_SHORT).show();
                 return true;
             }
             loadValidQuestion(currentQuestionIndex - 1, 0);
@@ -723,7 +734,7 @@ public class MainActivity extends AppCompatActivity {
             View dialogView = getLayoutInflater().inflate(R.layout.readme, null);
             builder.setView(dialogView);
 
-            builder.setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(I18n.tr("知道了"), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
@@ -750,7 +761,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("MainActivity", "显示说明对话框失败: " + e.getMessage());
             // 降级为Toast
-            Toast.makeText(this, "QQ群：635808985 · 1003608168 · 94846686", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, I18n.tr("QQ群：635808985 · 1003608168 · 94846686"), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -788,8 +799,8 @@ public class MainActivity extends AppCompatActivity {
                         updateAccuracy();
                         addToWrongBookIfNotExists();
                         ChineseRules.ViolationResult vr = chineseRules.getViolationResult();
-                        Toast.makeText(MainActivity.this, vr.description, Toast.LENGTH_LONG).show();
-                        showRetryDialog(vr.description + "！是否重来？");
+                        Toast.makeText(MainActivity.this, I18n.tr(vr.description), Toast.LENGTH_LONG).show();
+                        showRetryDialog(I18n.tr(vr.description) + I18n.tr("！是否重来？"));
                         return;
                     }
 
@@ -806,7 +817,7 @@ public class MainActivity extends AppCompatActivity {
                             && !longCheckHandled) {
                         chineseRules.markRepetitionToastShown();
                         Toast.makeText(MainActivity.this,
-                                "出现重复局面，请变招",
+                                I18n.tr("出现重复局面，请变招"),
                                 Toast.LENGTH_SHORT).show();
                     }
 
@@ -823,7 +834,7 @@ public class MainActivity extends AppCompatActivity {
                     // AI对战模式
                     if (winner == humanSide) {
                         // 人类获胜 → 进入下一题
-                        Toast.makeText(MainActivity.this, "🎉 你赢了！进入下一题", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, I18n.tr("🎉 你赢了！进入下一题"), Toast.LENGTH_SHORT).show();
                         if (!questionFinished && !questionRecorded) {
                             winCount++; questionRecorded = true;
                         }
@@ -839,7 +850,7 @@ public class MainActivity extends AppCompatActivity {
                         questionFinished = true;
                         updateAccuracy();
                         addToWrongBookIfNotExists();
-                        showRetryDialog("🤖 你输了！是否重来？");
+                        showRetryDialog(I18n.tr("🤖 你输了！是否重来？"));
                     }
                 } else {
                     // 普通练习模式（原有逻辑）
@@ -850,10 +861,10 @@ public class MainActivity extends AppCompatActivity {
                         questionFinished = true;
                         updateAccuracy();
                         markQuestionCompleted();
-                        Toast.makeText(MainActivity.this, "🎉 红方胜利！进入下一题", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, I18n.tr("🎉 红方胜利！进入下一题"), Toast.LENGTH_SHORT).show();
                         new Handler().postDelayed(() -> nextQuestion(), 800);
                     } else {
-                        Toast.makeText(MainActivity.this, "黑方胜利！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, I18n.tr("黑方胜利！"), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
@@ -890,9 +901,10 @@ public class MainActivity extends AppCompatActivity {
      * 显示当前日期（带加油语）
      */
     private void showCurrentDate() {
-        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy年MM月dd日", java.util.Locale.CHINA);
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat(
+                I18n.tr("yyyy年MM月dd日"), java.util.Locale.getDefault());
         String currentDate = sdf.format(new java.util.Date());
-        tvAccuracy.setText("🔥刘霸天为您加油！🔥🔥" + currentDate + "🔥");
+        tvAccuracy.setText(I18n.tr("🔥刘霸天为您加油！🔥🔥") + currentDate + "🔥");
     }
 
 
@@ -902,13 +914,15 @@ public class MainActivity extends AppCompatActivity {
      */
     private void updateTitle() {
         if (currentTiku != null && currentFenList != null && currentQuestionIndex < currentFenList.size()) {
-            String title = "<big><font color=\"#000000\"><b>" + currentTiku.getName() + "</b></font></big><br/><small>第 " + (currentQuestionIndex + 1) + "/" + currentFenList.size() + " 题</small>";
+            String title = "<big><font color=\"#000000\"><b>" + I18n.tr(currentTiku.getName()) + "</b></font></big><br/><small>"
+                    + I18n.tr("第 %d/%d 题", currentQuestionIndex + 1, currentFenList.size()) + "</small>";
             tvTitle.setText(android.text.Html.fromHtml(title));
         } else if (currentTiku != null) {
-            String title = "<big><font color=\"#000000\"><b>" + currentTiku.getName() + "</b></font></big><br/><small>已完成</small>";
+            String title = "<big><font color=\"#000000\"><b>" + I18n.tr(currentTiku.getName()) + "</b></font></big><br/><small>"
+                    + I18n.tr("已完成") + "</small>";
             tvTitle.setText(android.text.Html.fromHtml(title));
         } else {
-            tvTitle.setText("请选择题库");
+            tvTitle.setText(I18n.tr("请选择题库"));
         }
     }
 
@@ -933,7 +947,7 @@ public class MainActivity extends AppCompatActivity {
         int percentage = (doneCount * 100) / total;
 
         // 显示进度和正确率
-        String accuracyText = "进度/正确率：" + doneCount + "/" + total + " (" + percentage + "%)";
+        String accuracyText = I18n.tr("进度/正确率：%d/%d (%d%%)", doneCount, total, percentage);
         tvAccuracy.setText(accuracyText);
     }
 
@@ -1065,7 +1079,7 @@ public class MainActivity extends AppCompatActivity {
         int totalMinutes = totalElapsedSeconds / 60;
         int totalSecs = totalElapsedSeconds % 60;
 
-        String timeText = String.format("本题用时：%02d:%02d | 总用时：%02d:%02d",
+        String timeText = I18n.tr("本题用时：%02d:%02d | 总用时：%02d:%02d",
                 elapsedMinutes, elapsedSecs, totalMinutes, totalSecs);
         tvTime.setText(timeText);
     }
@@ -1078,7 +1092,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (currentTiku == null) {
-            Toast.makeText(this, "请选择题库", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("请选择题库"), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1087,12 +1101,12 @@ public class MainActivity extends AppCompatActivity {
 
         currentFenList = currentTiku.getFenList();
         if (currentFenList == null || currentFenList.isEmpty()) {
-            Toast.makeText(this, "题库为空", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("题库为空"), Toast.LENGTH_SHORT).show();
             return;
         }
 
         if (currentQuestionIndex >= currentFenList.size()) {
-            Toast.makeText(this, "🎉 已完成所有题目！", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, I18n.tr("🎉 已完成所有题目！"), Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -1109,10 +1123,10 @@ public class MainActivity extends AppCompatActivity {
         if (currentFenList == null || index >= currentFenList.size()) {
             // 已到题库末尾：不重置索引，直接重载当前最后一题，方便用户点"重来"恢复棋局
             if (currentTiku != null && currentFenList != null && !currentFenList.isEmpty()) {
-                Toast.makeText(this, "🎉 已完成所有题目！", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, I18n.tr("🎉 已完成所有题目！"), Toast.LENGTH_LONG).show();
                 loadCurrentQuestion();
             } else {
-                Toast.makeText(this, "🎉 已完成所有题目！", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, I18n.tr("🎉 已完成所有题目！"), Toast.LENGTH_LONG).show();
             }
             return;
         }
@@ -1120,7 +1134,7 @@ public class MainActivity extends AppCompatActivity {
             index = 0;
         }
         if (skipCount > 10) {
-            Toast.makeText(this, "连续多题局面不合法，已停止", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, I18n.tr("连续多题局面不合法，已停止"), Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -1148,7 +1162,7 @@ public class MainActivity extends AppCompatActivity {
         if (!vr.valid) {
             Log.w("MainActivity", "局面不合法[题" + (index + 1) + "]: " + vr.reason + " FEN=" + fen);
             Toast.makeText(this,
-                    "第" + (index + 1) + "题局面不合法：" + vr.reason + "，即将跳到下一题",
+                    I18n.tr("第%d题局面不合法：%s，即将跳到下一题", index + 1, vr.reason),
                     Toast.LENGTH_LONG).show();
             currentQuestionIndex = index + 1;
             // 延迟跳题，让 toast 有时间显示
@@ -1199,7 +1213,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("📚 选择题库");
+            builder.setTitle(I18n.tr("📚 选择题库"));
 
             View dialogView = getLayoutInflater().inflate(R.layout.dialog_tiku_selector, null);
             builder.setView(dialogView);
@@ -1244,7 +1258,7 @@ public class MainActivity extends AppCompatActivity {
                 return na.compareTo(nb);
             });
 
-            tvTotalInfo.setText("共 " + tikuList.size() + " 个题库");
+            tvTotalInfo.setText(I18n.tr("共 %d 个题库", tikuList.size()));
 
             TikuSelectorAdapter adapter = new TikuSelectorAdapter(this, tikuList);
             listView.setAdapter(adapter);
@@ -1295,21 +1309,21 @@ public class MainActivity extends AppCompatActivity {
 
                 // "错题本" 不可删除也不可隐藏
                 if (name.equals("错题本")) {
-                    Toast.makeText(MainActivity.this, "错题本不可删除", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, I18n.tr("错题本不可删除"), Toast.LENGTH_SHORT).show();
                     return true;
                 }
 
                 // "象棋杀着大全" 做完才可隐藏，否则 toast
                 if (name.equals("象棋杀着大全")) {
                     if (!ProgressManager.getInstance(MainActivity.this).isTikuFullyCompleted(name, tiku.getTotalCount())) {
-                        Toast.makeText(MainActivity.this, "不可隐藏不可删除", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, I18n.tr("不可隐藏不可删除"), Toast.LENGTH_SHORT).show();
                         return true;
                     }
                     // 已完成 → 弹窗确认隐藏
                     new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("隐藏题库")
-                            .setMessage("确定隐藏内置题库「" + name + "」吗？")
-                            .setPositiveButton("隐藏", (di, wi) -> {
+                            .setTitle(I18n.tr("隐藏题库"))
+                            .setMessage(I18n.tr("确定隐藏内置题库「%s」吗？", I18n.tr(name)))
+                            .setPositiveButton(I18n.tr("隐藏"), (di, wi) -> {
                                 android.content.SharedPreferences sp2 = getSharedPreferences("chess_data", MODE_PRIVATE);
                                 String h2 = sp2.getString("hidden_tikus", "");
                                 h2 = h2.isEmpty() ? name : h2 + "|" + name;
@@ -1317,9 +1331,9 @@ public class MainActivity extends AppCompatActivity {
                                 tikuManager.reloadTiku();
                                 if (tikuDialog != null && tikuDialog.isShowing()) tikuDialog.dismiss();
                                 showTikuSelectorDialog();
-                                Toast.makeText(MainActivity.this, "已隐藏", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, I18n.tr("已隐藏"), Toast.LENGTH_SHORT).show();
                             })
-                            .setNegativeButton("取消", null)
+                            .setNegativeButton(I18n.tr("取消"), null)
                             .show();
                     return true;
                 }
@@ -1327,23 +1341,23 @@ public class MainActivity extends AppCompatActivity {
                 if (extFile.exists()) {
                     // 外置文件 → 删除确认
                     new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("删除题库")
-                            .setMessage("确定删除外置题库「" + name + "」吗？")
-                            .setPositiveButton("删除", (di, wi) -> {
+                            .setTitle(I18n.tr("删除题库"))
+                            .setMessage(I18n.tr("确定删除外置题库「%s」吗？", I18n.tr(name)))
+                            .setPositiveButton(I18n.tr("删除"), (di, wi) -> {
                                 extFile.delete();
                                 tikuManager.reloadTiku();
                                 if (tikuDialog != null && tikuDialog.isShowing()) tikuDialog.dismiss();
                                 showTikuSelectorDialog();
-                                Toast.makeText(MainActivity.this, "已删除", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, I18n.tr("已删除"), Toast.LENGTH_SHORT).show();
                             })
-                            .setNegativeButton("取消", null)
+                            .setNegativeButton(I18n.tr("取消"), null)
                             .show();
                 } else {
                     // assets 内置 → 隐藏确认
                     new AlertDialog.Builder(MainActivity.this)
-                            .setTitle("隐藏题库")
-                            .setMessage("确定隐藏内置题库「" + name + "」吗？可在刷新后重新显示。")
-                            .setPositiveButton("隐藏", (di, wi) -> {
+                            .setTitle(I18n.tr("隐藏题库"))
+                            .setMessage(I18n.tr("确定隐藏内置题库「%s」吗？可在刷新后重新显示。", I18n.tr(name)))
+                            .setPositiveButton(I18n.tr("隐藏"), (di, wi) -> {
                                 // 记录到隐藏列表
                                 android.content.SharedPreferences sp = getSharedPreferences("chess_data", MODE_PRIVATE);
                                 String hidden = sp.getString("hidden_tikus", "");
@@ -1354,27 +1368,27 @@ public class MainActivity extends AppCompatActivity {
                                 tikuManager.reloadTiku();
                                 if (tikuDialog != null && tikuDialog.isShowing()) tikuDialog.dismiss();
                                 showTikuSelectorDialog();
-                                Toast.makeText(MainActivity.this, "已隐藏", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, I18n.tr("已隐藏"), Toast.LENGTH_SHORT).show();
                             })
-                            .setNegativeButton("取消", null)
+                            .setNegativeButton(I18n.tr("取消"), null)
                             .show();
                 }
                 return true;
             });
 
             // 刷新按钮（左边）— 清除隐藏记录并重新加载
-            builder.setNegativeButton("刷新", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(I18n.tr("刷新"), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     getSharedPreferences("chess_data", MODE_PRIVATE).edit().remove("hidden_tikus").apply();
                     tikuManager.reloadTiku();
-                    Toast.makeText(MainActivity.this, "已刷新", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, I18n.tr("已刷新"), Toast.LENGTH_SHORT).show();
                     showTikuSelectorDialog();
                 }
             });
 
             // 关闭按钮（右边）
-            builder.setPositiveButton("关闭", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(I18n.tr("关闭"), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
@@ -1386,7 +1400,7 @@ public class MainActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             Log.e("MainActivity", "显示题库选择失败: " + e.getMessage());
-            Toast.makeText(this, "加载题库失败", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("加载题库失败"), Toast.LENGTH_SHORT).show();
         }
     }
     /**
@@ -1425,7 +1439,7 @@ public class MainActivity extends AppCompatActivity {
             // ========================
 
             Toast.makeText(MainActivity.this,
-                    "加载第 " + (position + 1) + " 题", Toast.LENGTH_SHORT).show();
+                    I18n.tr("加载第 %d 题", position + 1), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -1435,13 +1449,13 @@ public class MainActivity extends AppCompatActivity {
      */
     private void nextQuestion() {
         if (currentTiku == null) {
-            Toast.makeText(this, "未选择题库", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("未选择题库"), Toast.LENGTH_SHORT).show();
             return;
         }
 
         currentFenList = currentTiku.getFenList();
         if (currentFenList == null || currentFenList.isEmpty()) {
-            Toast.makeText(this, "题库为空", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("题库为空"), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1459,7 +1473,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void showLevelDialog() {
         if (currentTiku == null) {
-            Toast.makeText(this, "请先选择题库", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("请先选择题库"), Toast.LENGTH_SHORT).show();
             showTikuSelectorDialog();
             return;
         }
@@ -1491,8 +1505,8 @@ public class MainActivity extends AppCompatActivity {
             TextView tvQuestionCount = dialogView.findViewById(R.id.tvQuestionCount);
             GridView gridView = dialogView.findViewById(R.id.gridViewQuestions);
 
-            tvTikuTitle.setText("📖 " + tiku.getName());
-            tvQuestionCount.setText("共 " + tiku.getTotalCount() + " 题");
+            tvTikuTitle.setText("📖 " + I18n.tr(tiku.getName()));
+            tvQuestionCount.setText(I18n.tr("共 %d 题", tiku.getTotalCount()));
 
             // ===== 计算高亮索引 =====
             int safeIndex;
@@ -1519,7 +1533,7 @@ public class MainActivity extends AppCompatActivity {
             gridView.setAdapter(adapter);
 
             // ===== 重置按钮（左边 - NegativeButton） - 必须在 create() 之前设置 =====
-            builder.setNegativeButton("🔄 重置进度", new DialogInterface.OnClickListener() {
+            builder.setNegativeButton(I18n.tr("🔄 重置进度"), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int which) {
                     showResetConfirmDialog(tiku);
@@ -1527,7 +1541,7 @@ public class MainActivity extends AppCompatActivity {
             });
 
             // ===== 关闭按钮（右边 - PositiveButton） - 必须在 create() 之前设置 =====
-            builder.setPositiveButton("关闭", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(I18n.tr("关闭"), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int which) {
                     dialogInterface.dismiss();
@@ -1603,10 +1617,10 @@ public class MainActivity extends AppCompatActivity {
      */
     private void showResetConfirmDialog(TikuData tiku) {
         new AlertDialog.Builder(this)
-                .setTitle("⚠️ 重置进度")
-                .setMessage("确定要重置 \"" + tiku.getName() + "\" 的进度吗？\n\n所有已完成题目将被标记为未完成，此操作不可撤销！")
+                .setTitle(I18n.tr("⚠️ 重置进度"))
+                .setMessage(I18n.tr("确定要重置 \"%s\" 的进度吗？\n\n所有已完成题目将被标记为未完成，此操作不可撤销！", I18n.tr(tiku.getName())))
                 .setIcon(android.R.drawable.ic_dialog_alert)
-                .setPositiveButton("重置", new DialogInterface.OnClickListener() {
+                .setPositiveButton(I18n.tr("重置"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // ===== 使用 ProgressManager 重置指定题库的进度 =====
@@ -1617,7 +1631,7 @@ public class MainActivity extends AppCompatActivity {
                             currentQuestionIndex = 0;
                             updateAccuracy();
                             loadCurrentQuestion();
-                            Toast.makeText(MainActivity.this, "进度已重置", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, I18n.tr("进度已重置"), Toast.LENGTH_SHORT).show();
                         }
 
                         dialog.dismiss();
@@ -1625,7 +1639,7 @@ public class MainActivity extends AppCompatActivity {
                         showQuestionSelectorDialog(tiku);
                     }
                 })
-                .setNegativeButton("取消", null)
+                .setNegativeButton(I18n.tr("取消"), null)
                 .show();
     }
 
@@ -1637,7 +1651,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void copyFEN() {
         if (chessView == null) {
-            Toast.makeText(this, "棋盘未初始化", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("棋盘未初始化"), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1649,13 +1663,13 @@ public class MainActivity extends AppCompatActivity {
                 getSystemService(CLIPBOARD_SERVICE);
         android.content.ClipData clip = android.content.ClipData.newPlainText("FEN", fen);
         clipboard.setPrimaryClip(clip);
-        Toast.makeText(this, "FEN已复制到剪贴板", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, I18n.tr("FEN已复制到剪贴板"), Toast.LENGTH_SHORT).show();
         Log.d("MainActivity", "FEN: " + fen);
     }
 
     private void restartCurrentQuestion() {
         if (chessView == null) {
-            Toast.makeText(this, "棋盘未初始化", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("棋盘未初始化"), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1670,14 +1684,14 @@ public class MainActivity extends AppCompatActivity {
 
         chessView.resetToCurrentInitial();
         elapsedSeconds = 0;
-        Toast.makeText(this, "已回到当前题目的初始局面", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, I18n.tr("已回到当前题目的初始局面"), Toast.LENGTH_SHORT).show();
     }
     /**
      * 拆解分析功能 - 跳转到分析界面
      */
     private void analyzePosition() {
         if (chessView == null) {
-            Toast.makeText(this, "棋盘未初始化", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("棋盘未初始化"), Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -1703,18 +1717,18 @@ public class MainActivity extends AppCompatActivity {
      */
     private void regretMove() {
         if (chessView == null) {
-            Toast.makeText(this, "棋盘未初始化", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("棋盘未初始化"), Toast.LENGTH_SHORT).show();
             return;
         }
         boolean success = chessView.undoMove();
         if (success) {
             // 悔棋后清除所有选中高亮，避免残留
             chessView.clearSelection();
-            Toast.makeText(this, "悔棋成功", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("悔棋成功"), Toast.LENGTH_SHORT).show();
             String fen = chessView.getFEN();
             Log.d("MainActivity", "悔棋后FEN: " + fen);
         } else {
-            Toast.makeText(this, "已回到最初局面", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("已回到最初局面"), Toast.LENGTH_SHORT).show();
         }
     }
     /**
@@ -1734,10 +1748,10 @@ public class MainActivity extends AppCompatActivity {
             addToWrongBook(rawFen);
             // ===================================
 
-            Toast.makeText(this, "标记为：不会 - 已记录到错题本", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("标记为：不会 - 已记录到错题本"), Toast.LENGTH_SHORT).show();
             nextQuestion();
         } else {
-            Toast.makeText(this, "未选择题库", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("未选择题库"), Toast.LENGTH_SHORT).show();
         }
     }
     /**
@@ -1785,10 +1799,10 @@ public class MainActivity extends AppCompatActivity {
             markQuestionCompleted();
             // ===========================
             updateAccuracy();
-            Toast.makeText(this, "标记为：已会", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("标记为：已会"), Toast.LENGTH_SHORT).show();
             nextQuestion();
         } else {
-            Toast.makeText(this, "未选择题库", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("未选择题库"), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -2015,7 +2029,7 @@ public class MainActivity extends AppCompatActivity {
                         String msg = e.getMessage();
                         String displayMsg = msg.length() > 300 ? msg.substring(0, 300) : msg;
                         Toast.makeText(MainActivity.this,
-                                "AI启动失败:\n" + displayMsg,
+                                I18n.tr("AI启动失败:\n%s", displayMsg),
                                 Toast.LENGTH_LONG).show();
                         Log.e("MainActivity", "Pikafish 引擎启动失败，完整错误:", e);
                     });
@@ -2129,7 +2143,7 @@ public class MainActivity extends AppCompatActivity {
                 chessView.setTouchEnabled(true);
                 updateAccuracy();
                 Toast.makeText(MainActivity.this,
-                        "皮卡鱼报错：" + error, Toast.LENGTH_LONG).show();
+                        I18n.tr("皮卡鱼报错：%s", error), Toast.LENGTH_LONG).show();
                 Log.e("MainActivity", "Pikafish 错误: " + error);
             }
         });
@@ -2156,7 +2170,7 @@ public class MainActivity extends AppCompatActivity {
                     questionFinished = true;
                     updateAccuracy();
                     addToWrongBookIfNotExists();
-                    showRetryDialog("双方可和棋（你执红，未过关），是否重来？");
+                    showRetryDialog(I18n.tr("双方可和棋（你执红，未过关），是否重来？"));
                 } else {
                     // 人类执黑 → 和棋算过关（执黑和棋或获胜都算过关）
                     if (!questionFinished && !questionRecorded) {
@@ -2166,7 +2180,7 @@ public class MainActivity extends AppCompatActivity {
                     markQuestionCompleted();
                     updateAccuracy();
                     Toast.makeText(MainActivity.this,
-                            "双方可和棋（你执黑，算过关）", Toast.LENGTH_SHORT).show();
+                            I18n.tr("双方可和棋（你执黑，算过关）"), Toast.LENGTH_SHORT).show();
                     nextQuestion();
                 }
             }
@@ -2190,13 +2204,13 @@ public class MainActivity extends AppCompatActivity {
         String lastLine = readLastLineOfWrongBook();
         if (rawFen.equals(lastLine)) {
             Log.d("MainActivity", "错题本最后一行已相同，跳过");
-            Toast.makeText(MainActivity.this, "错题本中已存在", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, I18n.tr("错题本中已存在"), Toast.LENGTH_SHORT).show();
             return;
         }
 
         addToWrongBook(rawFen);
         Log.d("MainActivity", "已加入错题本: " + rawFen);
-        Toast.makeText(MainActivity.this, "已记录到错题本", Toast.LENGTH_SHORT).show();
+        Toast.makeText(MainActivity.this, I18n.tr("已记录到错题本"), Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -2235,15 +2249,15 @@ public class MainActivity extends AppCompatActivity {
         chessView.setTouchEnabled(true);
 
         new AlertDialog.Builder(this)
-                .setTitle("再接再厉！")
+                .setTitle(I18n.tr("再接再厉！"))
                 .setMessage(message)
-                .setPositiveButton("Yes", (dialog, which) -> {
+                .setPositiveButton(I18n.tr("是"), (dialog, which) -> {
                     dialog.dismiss();
                     loadCurrentQuestion();
                     // 重来不重置统计（保留第一次结果）
                     questionRecorded = true;
                 })
-                .setNegativeButton("No", (dialog, which) -> {
+                .setNegativeButton(I18n.tr("否"), (dialog, which) -> {
                     dialog.dismiss();
                 })
                 .show();
@@ -2252,15 +2266,15 @@ public class MainActivity extends AppCompatActivity {
     /** 显示隐藏题库解锁弹窗 */
     private void showUnlockDialog() {
         TextView msg = new TextView(this);
-        msg.setText("🔥🔥刘霸天为您加油！🔥🔥🔥\n☁️☁️云库为您加油！☁️☁️\n🐟🐠🐡皮卡鱼为您加油！🦈🎏🐬🐳🐋");
+        msg.setText(I18n.tr("🔥🔥刘霸天为您加油！🔥🔥🔥\n☁️☁️云库为您加油！☁️☁️\n🐟🐠🐡皮卡鱼为您加油！🦈🎏🐬🐳🐋"));
         msg.setTextSize(16);
         msg.setGravity(android.view.Gravity.CENTER);
         msg.setPadding(40, 20, 40, 20);
 
         new AlertDialog.Builder(this)
-                .setTitle("🎉 恭喜解锁隐藏题库！")
+                .setTitle(I18n.tr("🎉 恭喜解锁隐藏题库！"))
                 .setView(msg)
-                .setPositiveButton("开始挑战", (d, w) -> d.dismiss())
+                .setPositiveButton(I18n.tr("开始挑战"), (d, w) -> d.dismiss())
                 .setCancelable(false)
                 .show();
     }
@@ -2314,7 +2328,7 @@ public class MainActivity extends AppCompatActivity {
             builder.setView(dialogView);
 
             // 设置按钮（使用自定义按钮样式）
-            builder.setPositiveButton("开始练习 🚀", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(I18n.tr("开始练习 🚀"), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();

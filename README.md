@@ -216,7 +216,8 @@ app/src/main/
 │   ├── PikafishEngine.java        # 皮卡鱼 UCI 引擎封装
 │   ├── ChineseRules.java          # 中国象棋特殊规则（长将/长捉判负）
 │   ├── PositionValidator.java     # 局面合法性校验
-│   ├── UciToChinese.java          # UCI 走法 → 中文棋谱转换
+│   ├── UciToChinese.java          # UCI 走法 → 本地化棋谱转换
+│   ├── I18n.java                  # 中文→越南语 i18n 字典（默认越南语）
 │   ├── QuestionGridAdapter.java   # 选关网格适配器
 │   ├── TikuSelectorAdapter.java   # 题库列表适配器
 │   ├── WrongBookAdapter.java      # 错题本适配器
@@ -224,13 +225,21 @@ app/src/main/
 ├── assets/
 │   ├── NeizhiTiku/                # 内置题库
 │   ├── YincangTiku/               # 隐藏题库
-│   └── Engine/                    # 皮卡鱼引擎二进制 + NNUE 权重
+│   └── Engine/
+│       └── pikafish.nnue          # 皮卡鱼 NNUE 权重
+├── jniLibs/
+│   └── arm64-v8a/
+│       └── libpikafish.so         # 皮卡鱼可执行文件（重命名为 .so 以便打包到 nativeLibraryDir）
 └── res/
     ├── layout/                    # 界面布局
     ├── drawable/                  # 默认棋盘/背景/图标
     ├── mipmap-*/                  # 应用图标
-    └── values/                    # 字符串、颜色、样式
+    ├── values/                    # 越南语默认资源
+    └── values-zh/                 # 中文资源（保留）
 ```
+
+> **引擎部署说明**：Android 10+（targetSdk ≥ 29）禁止执行应用数据目录中的文件，因此皮卡鱼可执行文件不能放在 `assets/Engine/` 再解压执行。请把官方 Android ARMv8 可执行文件复制为
+> `app/src/main/jniLibs/arm64-v8a/libpikafish.so`，NNUE 权重放在 `app/src/main/assets/Engine/pikafish.nnue`。`build.gradle.kts` 中的 `useLegacyPackaging = true` 会把它解压到 `nativeLibraryDir`，`PikafishEngine` 会优先从那里启动。
 
 ## 📂 数据文件
 
@@ -313,6 +322,12 @@ QQ 群：635808985 · 1003608168 · 94846686
 
 - 双击左下角显示为红帅/黑将的图标进入错题本
 - 双击右下角 Readme 进入致谢和使用说明
+
+---
+
+## 🌐 多语言（i18n）
+
+界面文案默认显示越南语（`app/src/main/res/values/`）。中文原文保留在字典中，可通过 `app/src/main/res/values-zh/` 与 `I18n.java` 回退显示；棋子图形本身不翻译。越南语走法记谱为 `Xe/Mã/Pháo/Tốt/Tướng/Sĩ/Tượng + số + tiến/thoái/bình + số`。
 
 ---
 

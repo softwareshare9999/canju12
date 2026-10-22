@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- 正常状态（没有点击时） -->
+    <!-- 正常状态（没有点击时）：浅色实底，让按钮从背景中凸显出来 -->
     <item android:state_pressed="false">
         <shape>
             <!-- 边框颜色和宽度 -->
             <stroke
                 android:width="1.5dp"
-                android:color="#000000" />
+                android:color="#6B4E2E" />
             <!-- 圆角半径 -->
             <corners android:radius="8dp" />
-            <!-- 背景透明 -->
-            <solid android:color="@android:color/transparent" />
+            <!-- 浅色羊皮纸底色 -->
+            <solid android:color="#F7EFD8" />
         </shape>
     </item>
 
@@ -21,11 +21,11 @@
             <!-- 边框颜色和宽度 -->
             <stroke
                 android:width="1.5dp"
-                android:color="#4F4F2f" />
+                android:color="#4F3A20" />
             <!-- 圆角半径 -->
             <corners android:radius="8dp" />
-            <!-- 点击时半透明绿色背景 -->
-            <solid android:color="#4F4F2f" />
+            <!-- 点击时加深底色 -->
+            <solid android:color="#DCC79A" />
         </shape>
     </item>
 

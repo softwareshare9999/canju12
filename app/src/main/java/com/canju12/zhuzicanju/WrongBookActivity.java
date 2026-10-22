@@ -172,26 +172,26 @@ public class WrongBookActivity extends AppCompatActivity {
      */
     private void showDeleteDialog(int position) {
         new AlertDialog.Builder(this)
-                .setTitle("删除错题")
-                .setMessage("确定删除第 " + (position + 1) + " 题吗？")
-                .setPositiveButton("删除", (dialog, which) -> {
+                .setTitle(I18n.tr("删除错题"))
+                .setMessage(I18n.tr("确定删除第 %d 题吗？", position + 1))
+                .setPositiveButton(I18n.tr("删除"), (dialog, which) -> {
                     manager.remove(position);
                     loadData();
-                    Toast.makeText(this, "已删除", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, I18n.tr("已删除"), Toast.LENGTH_SHORT).show();
                 })
-                .setNegativeButton("取消", null)
+                .setNegativeButton(I18n.tr("取消"), null)
                 .show();
     }
 
     private void pasteFromClipboard() {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         if (clipboard == null || !clipboard.hasPrimaryClip()) {
-            Toast.makeText(this, "剪贴板为空", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("剪贴板为空"), Toast.LENGTH_SHORT).show();
             return;
         }
         String text = clipboard.getPrimaryClip().getItemAt(0).getText().toString();
         if (TextUtils.isEmpty(text)) {
-            Toast.makeText(this, "内容为空", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("内容为空"), Toast.LENGTH_SHORT).show();
             return;
         }
         String[] lines = text.split("\n");
@@ -203,19 +203,19 @@ public class WrongBookActivity extends AppCompatActivity {
                 count++;
             }
         }
-        Toast.makeText(this, "添加了 " + count + " 条错题", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, I18n.tr("添加了 %d 条错题", count), Toast.LENGTH_SHORT).show();
         loadData();
     }
 
     private void exportWrongBook() {
         String content = manager.export();
         if (TextUtils.isEmpty(content)) {
-            Toast.makeText(this, "错题本为空", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("错题本为空"), Toast.LENGTH_SHORT).show();
             return;
         }
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        clipboard.setPrimaryClip(android.content.ClipData.newPlainText("错题本", content));
-        Toast.makeText(this, "已复制 " + manager.getCount() + " 条错题", Toast.LENGTH_SHORT).show();
+        clipboard.setPrimaryClip(android.content.ClipData.newPlainText(I18n.tr("错题本"), content));
+        Toast.makeText(this, I18n.tr("已复制 %d 条错题", manager.getCount()), Toast.LENGTH_SHORT).show();
     }
 
     /**

@@ -62,8 +62,8 @@ public class TikuSelectorAdapter extends BaseAdapter {
         }
 
         TikuData tiku = tikuList.get(position);
-        holder.tvTikuName.setText(tiku.getName());
-        holder.tvTikuInfo.setText("共 " + tiku.getTotalCount() + " 题");
+        holder.tvTikuName.setText(I18n.tr(tiku.getName()));
+        holder.tvTikuInfo.setText(I18n.tr("共 %d 题", tiku.getTotalCount()));
 
         return convertView;
     }

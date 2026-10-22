@@ -54,7 +54,7 @@ public class PositionValidator {
      */
     public Result validate(int[][] board) {
         if (board == null) {
-            return new Result(false, "棋盘为空");
+            return new Result(false, I18n.tr("棋盘为空"));
         }
         this.board = board;
 
@@ -83,7 +83,7 @@ public class PositionValidator {
                 total++;
                 int absP = Math.abs(p);
                 if (absP < 1 || absP > 7) {
-                    return new Result(false, "存在未知棋子类型: " + p);
+                    return new Result(false, I18n.tr("存在未知棋子类型: %d", p));
                 }
                 if (p > 0) red[absP]++;
                 else black[absP]++;
@@ -91,25 +91,25 @@ public class PositionValidator {
         }
 
         if (total > 32) {
-            return new Result(false, "棋子总数超过32个");
+            return new Result(false, I18n.tr("棋子总数超过32个"));
         }
 
         // 帅将必须各1个
-        if (red[1] != 1) return new Result(false, "红帅数量不合法(" + red[1] + ")");
-        if (black[1] != 1) return new Result(false, "黑将数量不合法(" + black[1] + ")");
+        if (red[1] != 1) return new Result(false, I18n.tr("红帅数量不合法(%d)", red[1]));
+        if (black[1] != 1) return new Result(false, I18n.tr("黑将数量不合法(%d)", black[1]));
 
-        if (red[2] > MAX_ADVISOR)  return new Result(false, "红仕超过2个");
-        if (black[2] > MAX_ADVISOR) return new Result(false, "黑士超过2个");
-        if (red[3] > MAX_ELEPHANT) return new Result(false, "红相超过2个");
-        if (black[3] > MAX_ELEPHANT) return new Result(false, "黑象超过2个");
-        if (red[4] > MAX_KNIGHT)   return new Result(false, "红马超过2个");
-        if (black[4] > MAX_KNIGHT)  return new Result(false, "黑马超过2个");
-        if (red[5] > MAX_ROOK)     return new Result(false, "红车超过2个");
-        if (black[5] > MAX_ROOK)    return new Result(false, "黑车超过2个");
-        if (red[6] > MAX_CANNON)   return new Result(false, "红炮超过2个");
-        if (black[6] > MAX_CANNON)  return new Result(false, "黑炮超过2个");
-        if (red[7] > MAX_PAWN)     return new Result(false, "红兵超过5个");
-        if (black[7] > MAX_PAWN)    return new Result(false, "黑卒超过5个");
+        if (red[2] > MAX_ADVISOR)  return new Result(false, I18n.tr("红仕超过2个"));
+        if (black[2] > MAX_ADVISOR) return new Result(false, I18n.tr("黑士超过2个"));
+        if (red[3] > MAX_ELEPHANT) return new Result(false, I18n.tr("红相超过2个"));
+        if (black[3] > MAX_ELEPHANT) return new Result(false, I18n.tr("黑象超过2个"));
+        if (red[4] > MAX_KNIGHT)   return new Result(false, I18n.tr("红马超过2个"));
+        if (black[4] > MAX_KNIGHT)  return new Result(false, I18n.tr("黑马超过2个"));
+        if (red[5] > MAX_ROOK)     return new Result(false, I18n.tr("红车超过2个"));
+        if (black[5] > MAX_ROOK)    return new Result(false, I18n.tr("黑车超过2个"));
+        if (red[6] > MAX_CANNON)   return new Result(false, I18n.tr("红炮超过2个"));
+        if (black[6] > MAX_CANNON)  return new Result(false, I18n.tr("黑炮超过2个"));
+        if (red[7] > MAX_PAWN)     return new Result(false, I18n.tr("红兵超过5个"));
+        if (black[7] > MAX_PAWN)    return new Result(false, I18n.tr("黑卒超过5个"));
 
         return null;
     }
@@ -130,29 +130,29 @@ public class PositionValidator {
                 switch (absP) {
                     case 1: // 帅将
                         if (!inPalace(y, x, isRed)) {
-                            return new Result(false, (isRed ? "红帅" : "黑将") + "不在九宫格");
+                            return new Result(false, I18n.tr((isRed ? "红帅" : "黑将") + "不在九宫格"));
                         }
                         break;
                     case 2: // 仕士
                         if (!inPalace(y, x, isRed)) {
-                            return new Result(false, (isRed ? "红仕" : "黑士") + "不在九宫格");
+                            return new Result(false, I18n.tr((isRed ? "红仕" : "黑士") + "不在九宫格"));
                         }
                         // 仕士只能走斜线，固定在九宫的5个点：(7或2,3)(7或2,5)(8或1,4)(9或0,3)(9或0,5)
                         if (!isAdvisorPoint(y, x, isRed)) {
-                            return new Result(false, (isRed ? "红仕" : "黑士") + "位置非法");
+                            return new Result(false, I18n.tr((isRed ? "红仕" : "黑士") + "位置非法"));
                         }
                         break;
                     case 3: // 相象
                         // 相象不能过河
                         if (isRed && y < 5) {
-                            return new Result(false, "红相过河");
+                            return new Result(false, I18n.tr("红相过河"));
                         }
                         if (!isRed && y > 4) {
-                            return new Result(false, "黑象过河");
+                            return new Result(false, I18n.tr("黑象过河"));
                         }
                         // 相象只能走田字，固定在7个点
                         if (!isElephantPoint(y, x, isRed)) {
-                            return new Result(false, (isRed ? "红相" : "黑象") + "位置非法");
+                            return new Result(false, I18n.tr((isRed ? "红相" : "黑象") + "位置非法"));
                         }
                         break;
                     case 7: // 兵卒
@@ -234,10 +234,10 @@ public class PositionValidator {
             if (y >= 5) {
                 // 未过河：只能在 row5 或 row6 的偶数列
                 if (y != 5 && y != 6) {
-                    return new Result(false, "红兵未过河却在非法位置(row" + y + ")");
+                    return new Result(false, I18n.tr("红兵未过河却在非法位置(row%d)", y));
                 }
                 if (!evenCol) {
-                    return new Result(false, "红兵未过河不能横走(col" + x + ")");
+                    return new Result(false, I18n.tr("红兵未过河不能横走(col%d)", x));
                 }
             }
             // 过河后(y<=4)位置不限
@@ -245,10 +245,10 @@ public class PositionValidator {
             if (y <= 4) {
                 // 未过河：只能在 row3 或 row4 的偶数列
                 if (y != 3 && y != 4) {
-                    return new Result(false, "黑卒未过河却在非法位置(row" + y + ")");
+                    return new Result(false, I18n.tr("黑卒未过河却在非法位置(row%d)", y));
                 }
                 if (!evenCol) {
-                    return new Result(false, "黑卒未过河不能横走(col" + x + ")");
+                    return new Result(false, I18n.tr("黑卒未过河不能横走(col%d)", x));
                 }
             }
             // 过河后(y>=5)位置不限
@@ -286,7 +286,7 @@ public class PositionValidator {
                 }
             }
             if (!blocked) {
-                return new Result(false, "将帅照面(飞将)");
+                return new Result(false, I18n.tr("将帅照面(飞将)"));
             }
         }
         return null;

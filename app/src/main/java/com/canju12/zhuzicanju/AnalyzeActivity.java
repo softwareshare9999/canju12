@@ -154,9 +154,9 @@ public class AnalyzeActivity extends AppCompatActivity {
         // 统一用 setTypeface 保证平板也加粗（sans-serif 有粗体变体）
         tvAnalyzeResult.setTypeface(android.graphics.Typeface.create("sans-serif", android.graphics.Typeface.BOLD));
         tvAnalyzeResult.setText(toBoldCenterTitle(
-                "<font color='#000000'><b>🐟🐠🐡皮卡鱼🦈🎏🐬🐳🐋</b></font><br/>" +
+                I18n.tr("<font color='#000000'><b>🐟🐠🐡皮卡鱼🦈🎏🐬🐳🐋</b></font><br/>") +
                 "<br/>" +
-                "🐟 🐠 🐡 皮卡鱼为您加油！🦈 🎏 🐬 🐳 🐋", tvAnalyzeResult));
+                I18n.tr("🐟 🐠 🐡 皮卡鱼为您加油！🦈 🎏 🐬 🐳 🐋"), tvAnalyzeResult));
         tvCloudDb = findViewById(R.id.tvCloudDb);
         // 云库标题也统一用 sans-serif BOLD
         tvCloudDb.setTypeface(android.graphics.Typeface.create("sans-serif", android.graphics.Typeface.BOLD));
@@ -218,13 +218,13 @@ public class AnalyzeActivity extends AppCompatActivity {
                 }
                 navigatingHistory = false;
                 updateTurnIndicator(chessView.getCurrentSide());
-                Toast.makeText(this, "悔棋成功", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, I18n.tr("悔棋成功"), Toast.LENGTH_SHORT).show();
                 queryCloudDb(chessView.getFEN());
                 updateMoveList();
                 // 悔棋后重新分析当前局面
                 restartAnalysisIfNeeded();
             } else {
-                Toast.makeText(this, "已回到最初局面", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, I18n.tr("已回到最初局面"), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -242,9 +242,9 @@ public class AnalyzeActivity extends AppCompatActivity {
             updateTurnIndicator(1);
             updateMoveList();
             tvAnalyzeResult.setText(toBoldCenterTitle(
-                "<font color='#1F6128'><b>🐟🐠🐡皮卡鱼🦈🎏🐬🐳🐋</b></font><br/><br/>🐟 🐠 🐡 皮卡鱼为您加油！🦈 🎏 🐬 🐳 🐋", tvAnalyzeResult));
+                I18n.tr("<font color='#1F6128'><b>🐟🐠🐡皮卡鱼🦈🎏🐬🐳🐋</b></font><br/><br/>🐟 🐠 🐡 皮卡鱼为您加油！🦈 🎏 🐬 🐳 🐋"), tvAnalyzeResult));
             queryCloudDb(chessView.getFEN());
-            Toast.makeText(this, "已重置局面", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, I18n.tr("已重置局面"), Toast.LENGTH_SHORT).show();
             // 重来后重新分析当前局面
             restartAnalysisIfNeeded();
         });
@@ -298,7 +298,7 @@ public class AnalyzeActivity extends AppCompatActivity {
             @Override
             public void onGameOver(int winner) {
                 Toast.makeText(AnalyzeActivity.this,
-                        winner == 1 ? "红方胜利！" : "黑方胜利！", Toast.LENGTH_SHORT).show();
+                        I18n.tr(winner == 1 ? "红方胜利！" : "黑方胜利！"), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -310,7 +310,7 @@ public class AnalyzeActivity extends AppCompatActivity {
 
         // 棋谱标题 - 同时也是初始局面入口
         TextView header = new TextView(this);
-        header.setText("初始局面");
+        header.setText(I18n.tr("初始局面"));
         header.setTextSize(12);
         header.setTextColor(0xFF000000);
         header.setTypeface(Typeface.DEFAULT_BOLD); // 加粗
@@ -395,7 +395,7 @@ public class AnalyzeActivity extends AppCompatActivity {
             try {
                 String encodedFen = java.net.URLEncoder.encode(fen, "UTF-8");
                 StringBuilder display = new StringBuilder();
-                display.append("云库\n");
+                display.append(I18n.tr("云库\n"));
 
                 // 查所有着法 queryall
                 String allUrl = CLOUD_DB_URL + "?action=queryall&board=" + encodedFen + "&egtbmetric=dtm&showall=1";
@@ -421,11 +421,11 @@ public class AnalyzeActivity extends AppCompatActivity {
                         }
                     }
                 } else if ("checkmate".equals(allResult)) {
-                    display.append("绝杀\n");
+                    display.append(I18n.tr("绝杀\n"));
                 } else if ("stalemate".equals(allResult)) {
-                    display.append("困毙\n");
+                    display.append(I18n.tr("困毙\n"));
                 } else {
-                    display.append("未找到该局面\n");
+                    display.append(I18n.tr("未找到该局面\n"));
                 }
 
                 // 去掉多余的深度查询段，深度已在上面每行显示
@@ -444,15 +444,15 @@ public class AnalyzeActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 Log.w(TAG, "云库查询失败", e);
-                runOnUiThread(() -> tvCloudDb.setText("云库：查询失败"));
+                runOnUiThread(() -> tvCloudDb.setText(I18n.tr("云库：查询失败")));
             }
         }).start();
     }
 
-    /** 按视觉宽度右补空格（中文=2，英文=1） */
+    /** 按视觉宽度右补空格（CJK=2，拉丁字母/越南语=1） */
     private String padVisual(String s, int target) {
         int w = 0;
-        for (char c : s.toCharArray()) { w += (c > 127) ? 2 : 1; }
+        for (char c : s.toCharArray()) { w += (c >= 0x2E80) ? 2 : 1; }
         StringBuilder sb = new StringBuilder(s);
         while (w < target) { sb.append(' '); w++; }
         return sb.toString();
@@ -496,7 +496,7 @@ private void initPoetryLibrary() {
             }
         }
         if (poetryList.isEmpty()) {
-            tvShiju.setText("诗词库为空，请检查 strings.xml");
+            tvShiju.setText(I18n.tr("诗词库为空，请检查 strings.xml"));
         }
     }
 
@@ -518,11 +518,11 @@ private void initPoetryLibrary() {
     private void showRandomPoetry() {
         if (poetryList == null || poetryList.isEmpty()) return;
         List<String> normalList = new ArrayList<>(poetryList);
-        if (normalList.contains("🔥🔥刘霸天为您加油🔥🔥")) {
-            normalList.remove("🔥🔥刘霸天为您加油🔥🔥🔥");
+        if (normalList.contains(I18n.tr("🔥🔥刘霸天为您加油🔥🔥"))) {
+            normalList.remove(I18n.tr("🔥🔥刘霸天为您加油🔥🔥🔥"));
         }
         if (normalList.isEmpty()) {
-            tvShiju.setText("暂无可用诗句");
+            tvShiju.setText(I18n.tr("暂无可用诗句"));
             return;
         }
         Random random = new Random();
@@ -532,7 +532,7 @@ private void initPoetryLibrary() {
     }
 
     private void displaySpecialMessage() {
-        String text = "🔥🔥刘霸天为您加油！🔥🔥🔥";
+        String text = I18n.tr("🔥🔥刘霸天为您加油！🔥🔥🔥");
         animateText(tvShiju, text);
     }
 
@@ -599,7 +599,7 @@ private void initPoetryLibrary() {
                 } catch (Exception ignored) {}
             }
             isAnalyzing = false;
-            btnAnalyze.setText("分析");
+            btnAnalyze.setText(I18n.tr("分析"));
         }
     }
 
@@ -682,7 +682,7 @@ private void initPoetryLibrary() {
         }
 
         if (!isEngineReady) {
-            btnAnalyze.setText("启动中...");
+            btnAnalyze.setText(I18n.tr("启动中..."));
             Log.d(TAG, "引擎未就绪，首次启动...");
 
             new Thread(() -> {
@@ -695,11 +695,11 @@ private void initPoetryLibrary() {
                     Log.e(TAG, "Pikafish 引擎启动失败", e);
                     runOnUiThread(() -> {
                         isEngineReady = false;
-                        btnAnalyze.setText("分析");
+                        btnAnalyze.setText(I18n.tr("分析"));
                         String msg = e.getMessage();
                         String displayMsg = msg != null && msg.length() > 300 ? msg.substring(0, 300) : msg;
                         Toast.makeText(AnalyzeActivity.this,
-                                "AI启动失败:\n" + displayMsg,
+                                I18n.tr("AI启动失败:\n%s", displayMsg),
                                 Toast.LENGTH_LONG).show();
                     });
                 }
@@ -718,7 +718,7 @@ private void initPoetryLibrary() {
         if (pikafishEngine == null || !isEngineReady) return;
 
         isAnalyzing = true;
-        btnAnalyze.setText("停止");
+        btnAnalyze.setText(I18n.tr("停止"));
 
         // 递增搜索ID
         int currentSearchId = ++searchId;
@@ -823,7 +823,7 @@ private void initPoetryLibrary() {
                 Log.e(TAG, "读取线程异常退出", e);
                 runOnUiThread(() -> {
                     isAnalyzing = false;
-                    btnAnalyze.setText("分析");
+                    btnAnalyze.setText(I18n.tr("分析"));
                 });
             }
             Log.d(TAG, "持久读取线程退出");
@@ -904,14 +904,14 @@ private void initPoetryLibrary() {
             StringBuilder line1 = new StringBuilder();
             if (displayIsMate) {
                 if (displayMateDistance > 0) {
-                    line1.append("绝杀（").append(displayMateDistance).append("步杀）");
+                    line1.append(I18n.tr("绝杀（%d步杀）", displayMateDistance));
                 } else {
-                    line1.append("被绝杀（").append(Math.abs(displayMateDistance)).append("步杀）");
+                    line1.append(I18n.tr("被绝杀（%d步杀）", Math.abs(displayMateDistance)));
                 }
             } else {
-                line1.append("分数：").append(displayScore).append("分");
+                line1.append(I18n.tr("分数：%d分", displayScore));
             }
-            line1.append("  ").append(depth).append("层");
+            line1.append("  ").append(I18n.tr("%d层", depth));
             line1.append("  ").append(nps / 1000).append(" k");
 
             // 构建第二行：中文招法
@@ -969,9 +969,9 @@ private void initPoetryLibrary() {
             } else {
                 color = (displayScore >= 0) ? "#0000FF" : "#FF0000";
             }
-            String html = "<div style='text-align:center'><font color='#1F6128'><b>🐟🐠🐡皮卡鱼🦈🎏🐬🐳🐋</b></font></div>" +
+            String html = I18n.tr("<div style='text-align:center'><font color='#1F6128'><b>🐟🐠🐡皮卡鱼🦈🎏🐬🐳🐋</b></font></div>") +
                     "<font color='" + color + "'><b>" + line1.toString() + "</b></font><br/>" +
-                    "<font color='#333333'>" + toFullWidth(line2.toString().trim()) + "</font>";
+                    "<font color='#333333'>" + (I18n.isChinese() ? toFullWidth(line2.toString().trim()) : line2.toString().trim()) + "</font>";
 
             // SpannableString 确保 <b> 加粗效果在所有设备（含平板）一致生效
             tvAnalyzeResult.setText(toBoldCenterTitle(html, tvAnalyzeResult));
@@ -1039,7 +1039,7 @@ private void initPoetryLibrary() {
      */
     private void stopPikafishAnalysis() {
         isAnalyzing = false;
-        btnAnalyze.setText("分析");
+        btnAnalyze.setText(I18n.tr("分析"));
 
         // 递增searchId
         searchId++;

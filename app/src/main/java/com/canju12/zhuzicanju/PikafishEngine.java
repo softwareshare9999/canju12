@@ -137,8 +137,8 @@ public class PikafishEngine {
                 String stderr = readStderr();
                 Log.w(TAG, "直接执行后进程退出，exitCode=" + exitCode +
                         ", stderr=" + stderr);
-                throw new Exception("进程退出(exitCode=" + exitCode + "): " +
-                        (stderr.isEmpty() ? "(无错误输出)" : stderr.trim()));
+                throw new Exception(I18n.tr("进程退出(exitCode=%d): %s", exitCode,
+                        stderr.isEmpty() ? I18n.tr("(无错误输出)") : stderr.trim()));
             }
             Log.d(TAG, "直接执行成功");
         } catch (Exception e) {
@@ -173,8 +173,8 @@ public class PikafishEngine {
                     String stderr = readStderr();
                     Log.w(TAG, "linker 后进程退出，exitCode=" + exitCode +
                             ", stderr=" + stderr);
-                    throw new Exception("linker执行后进程退出(" + exitCode + "):" +
-                            (stderr.isEmpty() ? "" : stderr.trim()));
+                    throw new Exception(I18n.tr("linker执行后进程退出(%d):%s", exitCode,
+                            stderr.isEmpty() ? "" : stderr.trim()));
                 }
                 Log.d(TAG, "linker 执行成功");
                 lastException = null;
@@ -196,16 +196,14 @@ public class PikafishEngine {
                         String stderr = readStderr();
                         Log.w(TAG, "shell 后进程退出，exitCode=" + exitCode +
                                 ", stderr=" + stderr);
-                        throw new Exception("shell执行后进程退出(" + exitCode + "):" +
-                                (stderr.isEmpty() ? "" : stderr.trim()));
+                        throw new Exception(I18n.tr("shell执行后进程退出(%d):%s", exitCode,
+                                stderr.isEmpty() ? "" : stderr.trim()));
                     }
                     Log.d(TAG, "shell 执行成功");
                     lastException = null;
                 } catch (Exception e3) {
-                    throw new Exception("无法执行引擎二进制:\n" +
-                            "方法1(直接): " + e.getMessage() + "\n" +
-                            "方法2(linker): " + e2.getMessage() + "\n" +
-                            "方法3(shell): " + e3.getMessage());
+                    throw new Exception(I18n.tr("无法执行引擎二进制:\n方法1(直接): %s\n方法2(linker): %s\n方法3(shell): %s",
+                            e.getMessage(), e2.getMessage(), e3.getMessage()));
                 }
             }
         }
@@ -265,10 +263,7 @@ public class PikafishEngine {
             testIs.close();
             Log.d(TAG, "Assets 文件存在: " + ENGINE_ASSET_PATH);
         } catch (Exception e) {
-            throw new Exception("assets/Engine/pikafish-armv8 未找到!\n" +
-                    "请确认文件位于:\n" +
-                    "app/src/main/assets/Engine/pikafish-armv8\n" +
-                    "注意: 不要用 .so 格式!", e);
+            throw new Exception(I18n.tr("assets/Engine/pikafish-armv8 未找到!\n请确认文件位于:\napp/src/main/assets/Engine/pikafish-armv8\n注意: 不要用 .so 格式!"), e);
         }
 
         // 如果已存在，跳过解压
@@ -366,7 +361,7 @@ public class PikafishEngine {
         if (!isReady || isQuitting) {
             if (callback != null) {
                 new Handler(Looper.getMainLooper()).post(() ->
-                        callback.onError("引擎未就绪"));
+                        callback.onError(I18n.tr("引擎未就绪")));
             }
             return;
         }
@@ -419,7 +414,7 @@ public class PikafishEngine {
                 Log.e(TAG, "引擎输出流意外关闭");
                 if (callback != null) {
                     new Handler(Looper.getMainLooper()).post(() ->
-                            callback.onError("引擎输出流关闭"));
+                            callback.onError(I18n.tr("引擎输出流关闭")));
                 }
             } catch (Exception e) {
                 Log.e(TAG, "获取走法失败", e);
@@ -458,7 +453,7 @@ public class PikafishEngine {
         if (!isReady || isQuitting) {
             if (callback != null) {
                 new Handler(Looper.getMainLooper()).post(() ->
-                        callback.onError("引擎未就绪"));
+                        callback.onError(I18n.tr("引擎未就绪")));
             }
             return;
         }
@@ -662,12 +657,12 @@ public class PikafishEngine {
             }
             return sb.toString();
         } catch (Exception e) {
-            return "(读取stderr失败: " + e.getMessage() + ")";
+            return I18n.tr("(读取stderr失败: %s)", e.getMessage());
         }
     }
 
     private void sendCommand(String cmd) throws Exception {
-        if (writer == null) throw new Exception("writer 为空");
+        if (writer == null) throw new Exception(I18n.tr("writer 为空"));
         writer.write(cmd + "\n");
         writer.flush();
         Log.v(TAG, ">>> " + cmd);
@@ -690,9 +685,9 @@ public class PikafishEngine {
                 return line;
             }
             if (System.currentTimeMillis() > deadline) {
-                throw new Exception("等待 '" + expected + "' 超时 (" + timeoutMs + "ms)");
+                throw new Exception(I18n.tr("等待 '%s' 超时 (%dms)", expected, timeoutMs));
             }
         }
-        throw new Exception("引擎输出流提前关闭，未收到 '" + expected + "'");
+        throw new Exception(I18n.tr("引擎输出流提前关闭，未收到 '%s'", expected));
     }
 }

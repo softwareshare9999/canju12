@@ -97,7 +97,7 @@ public class WrongBookAdapter extends RecyclerView.Adapter<WrongBookAdapter.View
         if (thumbnail != null) {
             holder.ivThumbnail.setImageBitmap(thumbnail);
         }
-        holder.tvIndex.setText("序号 " + (position + 1));
+        holder.tvIndex.setText(I18n.tr("序号 %d", position + 1));
 
         // 点击事件
         holder.itemView.setOnClickListener(v -> {
